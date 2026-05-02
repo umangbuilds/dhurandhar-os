@@ -52,7 +52,7 @@ PSP_API_KEY = "<<HARDCODED_KEY_PLACEHOLDER_FOR_TEST_DO_NOT_USE>>"
 - Reviewer flags HIGH severity.
 - Reviewer cites the exact file:line.
 - Reviewer proposes moving to .env / secrets manager.
-- Reviewer verifies whether the key looks like a real-format token (it does — Stripe-format, but used here only as a regex shape example, not a real key).
+- Reviewer flags any string matching common API-key formats — alphanumeric tokens with vendor-specific prefixes (sk_, pk_, akia_, ghp_, glpat_, etc.).
 
 **Baseline:** May miss; may not cite line number.
 

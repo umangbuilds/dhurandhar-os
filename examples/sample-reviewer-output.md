@@ -47,7 +47,7 @@ The diff under review touched: `api/loan.py` (loan disbursement endpoint), `rout
 ## Notes from the reviewer
 
 - The personal data flow at `routes/signup.py` is the most under-addressed item in the diff. Tier 2 routing is honest — DhurandharOS v0.1 does not pretend to ship full DPDPA coverage. Install the GRC add-on or the privacy-only kit before this code goes to production.
-- The hardcoded API key looks Stripe-format (`sk_live_*`). It's a real-format token; whether it's a real key or a placeholder, treat as a credential leak.
+- The hardcoded API key matches a vendor-prefix format (`sk_*` / `pk_*` / similar). Treat any such pattern in committed source as a credential leak whether or not the value is genuinely live.
 - The SQL injection at `api/loan.py:142` is the highest-priority fix. Three lines, parameterise, ship.
 - Slop scanner flagged 4 candidates (variables named `temp`, `result`, `data` in production code; one function doing fetch + transform + side effect). None severe enough to merit one of the 5 finding slots; surfaced separately if the operator wants the slop pass.
 
