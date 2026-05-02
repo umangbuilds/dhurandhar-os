@@ -16,7 +16,7 @@ This guide covers what we accept, the standards your contribution must meet, and
 
 ## What we do NOT accept
 
-- Skills that violate the banned-tokens list (Razorpay, Cashfree, PhonePe, PayU, Paytm in PSP context, MoltPe, Ranveer Singh, Dhurandhar-as-film, emoji of any range).
+- Skills that violate the banned-tokens list defined in STYLE.md (no competitor PSP / aggregator brand names, no founder's parallel venture, no film references, no emoji of any range).
 - Voice contributions that break the 80/15/5 rhythm (US-default, sycophantic, emoji-heavy).
 - Skills that aren't MIT or compatible (no GPL, no CC-BY-NC-*, no proprietary).
 - Skills with unverified source attributions. Every Tier 1 source must have a pinned commit SHA and license verified.

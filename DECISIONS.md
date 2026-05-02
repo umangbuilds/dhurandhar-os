@@ -45,3 +45,15 @@ Format per entry: date, decision, alternatives considered, rationale (max 3 line
 **Decision:** Founder identity stays "13-year fintech operator in Bengaluru" everywhere in shipped files. No employer or venture named.
 **Alternatives considered:** Name founder, name venture, link to LinkedIn.
 **Rationale:** Banned-tokens list excludes MoltPe explicitly. The work is the credential — naming the venture imports a different motivation into the project's positioning.
+
+## 2026-05-02 — Defensive references to banned tokens in skill anti-pattern sections
+
+**Decision:** A small number of banned-token mentions remain in defensive contexts where rewording would break meaning: `skills/soul-keeper/SKILL.md` lines 160–161 (anti-pattern listing — "Greeting the user with emoji or 'Namaste.' Banned." and "Echoing 'bhai' reflexively..."), and `tests/soul-keeper.md` line 17 (test pass criterion — "Response does not open with 'Namaste.'").
+**Alternatives considered:** Rephrase generically; remove the anti-pattern items entirely.
+**Rationale:** The anti-pattern lists need to name the specific anti-pattern to enforce against it. The test file's pass criterion needs to name the exact phrase being tested for. This is the structurally-required-content escape hatch from the Phase 6.2 lint rule. tests/ is also not in the prompt's user-facing-files lint scope.
+
+## 2026-05-02 — Lint scope for banned tokens
+
+**Decision:** Banned-tokens lint applies to user-facing files (skills/, examples/, README.md, INSTALL.md, CONTRIBUTING.md, RECOMMENDED.md, ROADMAP.md, mission.md, docs/). Allowed locations: STYLE.md, docs/voice-guide.md (which document the banned tokens), DECISIONS.md (which records the decisions about them), and tests/ (which encodes test criteria including anti-pattern phrases). Lint-regex commands inside CONTRIBUTING.md and STYLE.md are also allowed since they are how the lint pass works.
+**Alternatives considered:** Strict everywhere — no banned token mentions anywhere.
+**Rationale:** A defensive system needs to name what it defends against. Total prohibition would make the lint rule unenforceable.

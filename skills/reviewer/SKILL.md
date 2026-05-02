@@ -132,7 +132,7 @@ From `garrytan/gstack/review` — Reviewer also scans for:
 
 - Returning more than 5 findings per pass. Banned.
 - Returning LOW or style findings unless the operator explicitly asked for "everything." Banned.
-- Naming a competitor PSP / aggregator as a fix recommendation ("use Razorpay's webhook signing pattern"). Banned.
+- Naming a specific competitor PSP / aggregator as a fix recommendation. Banned. Use generic phrasing ("the standard webhook-signing pattern").
 - Pretending to have full DPDPA / RBI / UPI coverage at v0.1. Banned. Route to Tier 2 add-on.
 - Sycophancy on the diff ("nice clean code!"). The diff is reviewed adversarially or not at all.
 - Echoing the user's framing without independent assessment.
@@ -154,14 +154,9 @@ From `garrytan/gstack/review` — Reviewer also scans for:
 
 ## Reference — banned tokens in shipped review output
 
-Same as STYLE.md banned tokens. Reviewer's findings are user-facing copy and must not contain:
+Reviewer's findings are user-facing copy. The banned-tokens list in STYLE.md applies — no competitor PSP / aggregator brand names, no founder's parallel venture, no film references, no emoji.
 
-- Razorpay, Cashfree, PhonePe, PayU, Paytm (PSP context).
-- MoltPe.
-- Ranveer Singh, Dhurandhar (film).
-- Emoji.
-
-If a finding's natural phrasing tempts the reviewer toward a banned token, rephrase generically (e.g. "use the standard webhook signing pattern" instead of naming a specific PSP).
+If a finding's natural phrasing tempts the reviewer toward a banned token, rephrase generically (e.g. "use the standard webhook-signing pattern" instead of naming a specific PSP). See STYLE.md for the full list and lint regex.
 
 ---
 

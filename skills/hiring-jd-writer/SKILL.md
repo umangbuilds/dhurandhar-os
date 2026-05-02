@@ -200,12 +200,12 @@ For first hires, also flag:
 
 ## Reference — banned tokens in shipped JD copy
 
-Same as STYLE.md banned tokens. JDs are user-facing copy and must not contain:
-- Razorpay, Cashfree, PhonePe, PayU, Paytm (PSP context).
-- MoltPe.
-- Ranveer Singh, Dhurandhar (film).
-- Emoji.
-- "Rockstar / ninja / 10x."
+JDs are user-facing copy. The banned-tokens list in STYLE.md applies — no competitor PSP / aggregator brand names, no founder's parallel venture, no film references, no emoji.
+
+JD-specific additions (also banned in shipped JD copy):
+- "Rockstar / ninja / 10x" engineer framing.
+
+See STYLE.md for the full list and lint regex.
 
 ---
 

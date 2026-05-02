@@ -154,7 +154,7 @@ If the operator wants the full draft in one shot, they can ask for it — but PR
 ## Anti-patterns
 
 - Locking a spec without answering the settlement timing question. Banned.
-- Naming a competitor PSP as the integration target ("we'll use Razorpay's webhook signing"). Banned. Use generic terms.
+- Naming a specific competitor PSP / aggregator as the integration target. Banned. Use generic terms ("the payment provider's webhook," "the PSP's signature verification").
 - Skipping failure modes. Banned.
 - Pretending v0.1 has full DPDPA / RBI coverage. Banned. Route honestly.
 - Sycophancy on PRD review ("Great spec, looks complete!"). The spec is locked or it isn't.
@@ -174,13 +174,9 @@ If the operator wants the full draft in one shot, they can ask for it — but PR
 
 ## Reference — banned tokens in shipped PRD copy
 
-Same as STYLE.md banned tokens. PRDs are user-facing copy in the project's docs and must not contain:
-- Razorpay, Cashfree, PhonePe, PayU, Paytm (PSP context).
-- MoltPe.
-- Ranveer Singh, Dhurandhar (film).
-- Emoji.
+PRDs are user-facing copy in the project's docs. The banned-tokens list in STYLE.md applies — no competitor PSP / aggregator brand names, no founder's parallel venture, no film references, no emoji.
 
-When the natural phrasing tempts the writer toward a banned token, rephrase generically: "the payment provider's webhook" instead of "the Razorpay webhook."
+When the natural phrasing tempts the writer toward a banned token, rephrase generically: "the payment provider's webhook" instead of naming a specific aggregator. See STYLE.md for the full list and lint regex.
 
 ---
 
