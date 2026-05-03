@@ -1,17 +1,24 @@
 {
   "name": "dhurandhar-os",
-  "version": "0.1.0",
-  "description": "The operating system for one-person armies who refuse to think small. Six Tier 1 skills (Soul Keeper, Builder, Reviewer, PRD Writer, Idea Reality Check, Hiring JD Writer) plus one v0.2 stub. Universal solo-operator workflow with one India-context hiring wedge.",
-  "author": "DhurandharOS contributors",
+  "version": "0.1.2",
+  "description": "The operating system for one-person armies who refuse to think small. Seven Tier 1 skills for non-technical Indian operators shipping serious products alone — including Deployment Advisor (Vercel/Supabase/AWS Mumbai).",
+  "author": {
+    "name": "DhurandharOS contributors",
+    "url": "https://github.com/umangbuilds/dhurandhar-os"
+  },
   "license": "MIT",
-  "homepage": "https://github.com/dhurandhar-os/dhurandhar-os",
-  "skills": [
-    "skills/soul-keeper",
-    "skills/builder",
-    "skills/reviewer",
-    "skills/prd-writer",
-    "skills/idea-reality-check",
-    "skills/hiring-jd-writer",
-    "skills/launch-marketer"
+  "homepage": "https://github.com/umangbuilds/dhurandhar-os",
+  "repository": "https://github.com/umangbuilds/dhurandhar-os",
+  "keywords": [
+    "india",
+    "fintech",
+    "solo-founder",
+    "indie-hacker",
+    "bengaluru",
+    "operator",
+    "tdd",
+    "hiring",
+    "prd",
+    "code-review"
   ]
 }

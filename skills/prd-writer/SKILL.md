@@ -113,6 +113,8 @@ For every spec, ask and answer:
 
 Each Y entry adds a routing line to the spec. Each routing line is honest about what v0.1 covers and what it doesn't.
 
+- **Payment provider:** if the user has named a specific PSP earlier in the conversation, use that name in the spec. If the user hasn't named one, write "Payment Aggregator (TBD)" in the spec and surface it as an unresolved question at the end. Do not recommend a specific PSP unless the user asks.
+
 ---
 
 ## Failure modes — required entries
@@ -177,6 +179,14 @@ If the operator wants the full draft in one shot, they can ask for it — but PR
 PRDs are user-facing copy in the project's docs. The banned-tokens list in STYLE.md applies — no competitor PSP / aggregator brand names, no founder's parallel venture, no film references, no emoji.
 
 When the natural phrasing tempts the writer toward a banned token, rephrase generically: "the payment provider's webhook" instead of naming a specific aggregator. See STYLE.md for the full list and lint regex.
+
+---
+
+## File-write boundary
+
+This skill operates within the user's working directory only. It must never modify files inside `skills/`, `.claude-plugin/`, `hooks/`, `tests/`, `docs/`, or any DhurandharOS plugin file. See STYLE.md "Hard constraint — no self-modification" for the full rule.
+
+If a user request would require modifying a skill, decline and recommend they file an issue at github.com/umangbuilds/dhurandhar-os/issues.
 
 ---
 

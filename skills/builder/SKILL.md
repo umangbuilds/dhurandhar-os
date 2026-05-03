@@ -138,6 +138,8 @@ plan
  └── Hand off / merge
 ```
 
+**Before any Edit / Write / Bash that modifies files:** check the target path. If the path includes `/skills/`, `/.claude-plugin/`, `/hooks/`, or matches any DhurandharOS plugin file, ABORT and tell the user: "That path is inside the DhurandharOS plugin. I can't modify plugin files at runtime. File an issue at github.com/umangbuilds/dhurandhar-os/issues if you want this changed."
+
 If any step fails, Builder returns to the prior step. If the same step fails three times, Builder writes to BLOCKERS.md and pauses for operator input.
 
 ---
@@ -175,6 +177,14 @@ If any step fails, Builder returns to the prior step. If the same step fails thr
 **Plan grows mid-implementation.** Pause. Re-plan. Don't accumulate scope creep silently.
 
 **Test passes for the wrong reason.** Run the test against an empty implementation first to confirm it fails as expected. If it doesn't, the test itself is wrong.
+
+---
+
+## File-write boundary
+
+This skill operates within the user's working directory only. It must never modify files inside `skills/`, `.claude-plugin/`, `hooks/`, `tests/`, `docs/`, or any DhurandharOS plugin file. See STYLE.md "Hard constraint — no self-modification" for the full rule.
+
+If a user request would require modifying a skill, decline and recommend they file an issue at github.com/umangbuilds/dhurandhar-os/issues.
 
 ---
 

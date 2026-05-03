@@ -2,15 +2,31 @@
 
 **The operating system for one-person armies who refuse to think small.**
 
-DhurandharOS is a Claude Code skills package for non-technical operators who want to ship serious products alone. The package is the "senior team in a file": product, engineering, security, hiring, voice, and identity roles encoded as auto-triggering skills that load when the work calls for them.
+> For Claude Code, not the Claude Desktop chat app. See [INSTALL.md](INSTALL.md) if you're not sure which one you have (`$ claude --version` in your terminal — if that works, you have Claude Code).
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Claude Code 2.0+](https://img.shields.io/badge/Claude%20Code-2.0%2B-blue.svg)](https://claude.ai/code)
+[![Status: v0.1.2](https://img.shields.io/badge/Status-v0.1.2-green.svg)](ROADMAP.md)
+
+DhurandharOS is a Claude Code skills package for non-technical operators who want to ship serious products alone. The package is the "senior team in a file": product, engineering, security, hiring, deployment, voice, and identity roles encoded as auto-triggering skills that load when the work calls for them.
 
 MIT. Free. Open source. Forever.
 
 ---
 
+## See it in action
+
+*Demo video — recording on workshop day, embed after.*
+
+What the flow looks like: operator opens Claude Code in their project directory. Soul Keeper loads silently — identity, voice, memory all calibrated. Operator says "I'm thinking about building a payments reconciliation tool." Idea Reality Check surfaces: who's your first paying user, what are they paying you to make go away. Operator names them, moves to "let's spec this." PRD Writer takes over: settlement timing question raised in minute two, failure modes mandatory, webhook reconciliation ownership named. Operator says "build the webhook handler." Builder writes the plan first, the failing test second. Operator says "review this." Reviewer returns three ranked findings, no noise. Operator says "I want to hire an SDE-2." Hiring JD Writer: comp band from public data, ESOP §17(2)(vi) note, no Tier-1-only filter. "Where should I host this?" Deployment Advisor: Vercel + Supabase for the pre-revenue phase.
+
+That's one session. No slash commands memorised.
+
+---
+
 ## What this is
 
-A non-technical operator with serious range — but no co-founder, no CTO, no engineering team — opens Claude Code and starts building. DhurandharOS loads. The senior product manager, the senior engineer, the senior security reviewer, the senior hiring lead, the voice coach — all wake up. They auto-trigger on what the operator is doing, not on slash commands the operator has to memorise.
+A non-technical operator with serious range — but no co-founder, no CTO, no engineering team — opens Claude Code and starts building. DhurandharOS loads. The senior product manager, the senior engineer, the senior security reviewer, the senior hiring lead, the deployment architect, the voice coach — all wake up. They auto-trigger on what the operator is doing, not on slash commands the operator has to memorise.
 
 The operator drives. DhurandharOS keeps the discipline tight.
 
@@ -27,7 +43,7 @@ It is not for someone who wants a black-box agent that builds while they sleep. 
 
 ---
 
-## The 6 skills
+## The 7 skills
 
 ### Soul Keeper
 Loads SOUL.md, STYLE.md, and IDENTITY.md at session start. Captures running memory to MEMORY.md and learnings to lessons.md. Enforces voice — Pan-Indian English with the 80/15/5 rhythm — across every response. Mirror principle: voice flexes to your register, opinions stay constant.
@@ -59,6 +75,11 @@ The one India-context skill in v0.1. Produces job descriptions with comp bands c
 
 **Auto-triggers on:** "hire," "JD," "job description," "role," "looking for someone," "ESOP grant," "offer letter," "comp band."
 
+### Deployment Advisor (v0.1.2)
+Path A: Vercel + Supabase for non-regulated SaaS. Path B: Supabase pre-revenue, AWS Mumbai for regulated fintech production — with explicit migration triggers (first 10 paying users, RBI Sandbox, real KYC flows). Surfaces startup credits question non-blocking. PSP guidance only when asked.
+
+**Auto-triggers on:** "deploy," "hosting," "where should I host," "what infra," "cloud setup," "going live," "production setup."
+
 ### Plus one stub
 **Launch + Marketer** lands in v0.2. The stub points to a curated Tier 2 add-on (`coreyhaines31/marketingskills`) for now.
 
@@ -68,7 +89,7 @@ The one India-context skill in v0.1. Produces job descriptions with comp bands c
 
 DhurandharOS is a 90-day demonstration project. The arc is honest:
 
-- **v0.1 (now):** universal solo-operator workflow + Hiring JD Writer as the one India wedge. The fintech depth (DPDPA, RBI Digital Lending, UPI Payments) is *not* in v0.1.
+- **v0.1 (shipped):** universal solo-operator workflow + Hiring JD Writer as the one India wedge. Deployment Advisor added in v0.1.2.
 - **v0.2 (Day 60–90):** Launch + Marketer expanded. DPDPA Compliance, RBI Digital Lending, UPI Payments land as core skills. The fintech operator's brain comes online.
 - **v0.3 (Day 90–180):** broader Indian compliance (incorporation, GST/TDS, POSH, ESOP, FEMA, ToS/Privacy). Hindi/regional voice variants. Tier 2/3 GTM playbooks.
 
@@ -80,15 +101,64 @@ See [ROADMAP.md](ROADMAP.md) for the full version arc.
 
 ## Install
 
-See [INSTALL.md](INSTALL.md) for the quick install. Short version:
+See [INSTALL.md](INSTALL.md) for the full install guide including Windows and troubleshooting. Short version:
 
 ```
-git clone https://github.com/<your-handle>/dhurandhar-os
-cd dhurandhar-os
-# Then point your Claude Code plugin marketplace at this directory
+$ claude plugin marketplace add umangbuilds/dhurandhar-os
+```
+
+Then inside Claude Code:
+
+```
+/plugin install dhurandhar-os@dhurandhar-os
+/reload-plugins
 ```
 
 The skills auto-trigger on natural language. You do not need to remember slash commands.
+
+---
+
+## Community
+
+**GitHub Discussions** — questions, show-and-tell, feature ideas:
+[github.com/umangbuilds/dhurandhar-os/discussions](https://github.com/umangbuilds/dhurandhar-os/discussions)
+
+**GitHub Issues** — bugs, skill improvement requests:
+[github.com/umangbuilds/dhurandhar-os/issues](https://github.com/umangbuilds/dhurandhar-os/issues)
+
+**WhatsApp Community** — async updates, workshop announcements:
+*Link coming — operator will post after workshop day.*
+
+**Discord** — real-time discussion, build-in-public:
+*Link coming — operator will post after workshop day.*
+
+---
+
+## FAQ
+
+**1. What's "Dhurandhar" in the name?**
+Dhurandhar (धुरंधर) — Hindi / Sanskrit. One who carries the burden on their shoulders. The load-bearer. It's the right word for a founder doing the work of a team. The package name came before the film; the two are unrelated.
+
+**2. Is this for me if I'm not in fintech?**
+Yes. Soul Keeper, Builder, Reviewer, PRD Writer, and Idea Reality Check are universal solo-operator skills. Hiring JD Writer is India-context but not fintech-specific. Deployment Advisor covers any SaaS. Only the Tier 2 add-ons (DPDPA, RBI) are fintech-specific.
+
+**3. Why don't skills recommend a specific payment gateway by default?**
+The Deployment Advisor and PRD Writer surface PSP guidance when you ask. Default specs write "Payment Aggregator (TBD)" because PSP selection is a business decision that belongs to the operator, not to the skill. When you ask, you get an honest landscape with settlement timing differences and the RBI PA registry pointer.
+
+**4. Why is DPDPA / RBI / UPI integration not in v0.1?**
+Building those correctly requires a specialist. We point you to Sushegaad's GRC kit (50+ skills, DPDPA + GDPR + ISO 27001 + SOC 2) and mukul975's Privacy-Data-Protection-Skills. They ship the depth; we ship the router. v0.2 absorbs a curated core from those into DhurandharOS itself.
+
+**5. Is the voice "Pan-Indian English" — what does that mean?**
+80% of responses in a direct, operator-vocabulary English that fits how Indian founders talk to each other and to their teams ("ship," "spec," "moat," "runway," "land it"). Not British formality, not American casual, not faux-folksy vernacular openers. 15% cultural reference — cricket frames, founder folklore (Zomato's pivot, Zerodha's bootstrap, CRED's bet). 5% vernacular, mirrored from you after you use it twice, never as default costume.
+
+**6. What does this cost?**
+Free. MIT. Forever. The Anthropic API costs you tokens; DhurandharOS itself costs nothing. No paid tier in v0.1, v0.2, or ever planned.
+
+**7. How do I contribute?**
+See [CONTRIBUTING.md](CONTRIBUTING.md). MIT only. The skill body must obey STYLE.md. TDD-for-skills required (SKILL.md + pressure tests + test results). ATTRIBUTIONS.md update required for imported sources. If you're adding an India-context skill, open an issue first so we can align on the wedge.
+
+**8. What if my company already uses Cursor / Codex / Windsurf?**
+DhurandharOS is Claude Code only. It uses the SKILL.md auto-trigger model which is specific to Claude Code's plugin architecture. Codex / Cursor / Windsurf use different agent and context mechanisms. A port is possible; it's not on the v0.1 roadmap.
 
 ---
 

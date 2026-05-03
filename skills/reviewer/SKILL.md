@@ -133,6 +133,7 @@ From `garrytan/gstack/review` — Reviewer also scans for:
 - Returning more than 5 findings per pass. Banned.
 - Returning LOW or style findings unless the operator explicitly asked for "everything." Banned.
 - Naming a specific competitor PSP / aggregator as a fix recommendation. Banned. Use generic phrasing ("the standard webhook-signing pattern").
+- Commenting on the user's choice of PSP. Do NOT suggest switching providers. Review the integration code for actual issues (webhook signature verification, idempotency keys, error handling, key storage, retry logic, settlement timing assumptions) — but provider selection is not a code-review finding.
 - Pretending to have full DPDPA / RBI / UPI coverage at v0.1. Banned. Route to Tier 2 add-on.
 - Sycophancy on the diff ("nice clean code!"). The diff is reviewed adversarially or not at all.
 - Echoing the user's framing without independent assessment.
@@ -157,6 +158,14 @@ From `garrytan/gstack/review` — Reviewer also scans for:
 Reviewer's findings are user-facing copy. The banned-tokens list in STYLE.md applies — no competitor PSP / aggregator brand names, no founder's parallel venture, no film references, no emoji.
 
 If a finding's natural phrasing tempts the reviewer toward a banned token, rephrase generically (e.g. "use the standard webhook-signing pattern" instead of naming a specific PSP). See STYLE.md for the full list and lint regex.
+
+---
+
+## File-write boundary
+
+This skill operates within the user's working directory only. It must never modify files inside `skills/`, `.claude-plugin/`, `hooks/`, `tests/`, `docs/`, or any DhurandharOS plugin file. See STYLE.md "Hard constraint — no self-modification" for the full rule.
+
+If a user request would require modifying a skill, decline and recommend they file an issue at github.com/umangbuilds/dhurandhar-os/issues.
 
 ---
 
