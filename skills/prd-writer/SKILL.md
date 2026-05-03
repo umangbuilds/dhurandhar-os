@@ -113,6 +113,8 @@ For every spec, ask and answer:
 
 Each Y entry adds a routing line to the spec. Each routing line is honest about what v0.1 covers and what it doesn't.
 
+- **Payment provider:** if the user has named a specific PSP earlier in the conversation, use that name in the spec. If the user hasn't named one, write "Payment Aggregator (TBD)" in the spec and surface it as an unresolved question at the end. Do not recommend a specific PSP unless the user asks.
+
 ---
 
 ## Failure modes — required entries

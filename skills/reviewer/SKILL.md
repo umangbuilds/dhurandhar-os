@@ -133,6 +133,7 @@ From `garrytan/gstack/review` — Reviewer also scans for:
 - Returning more than 5 findings per pass. Banned.
 - Returning LOW or style findings unless the operator explicitly asked for "everything." Banned.
 - Naming a specific competitor PSP / aggregator as a fix recommendation. Banned. Use generic phrasing ("the standard webhook-signing pattern").
+- Commenting on the user's choice of PSP. Do NOT suggest switching providers. Review the integration code for actual issues (webhook signature verification, idempotency keys, error handling, key storage, retry logic, settlement timing assumptions) — but provider selection is not a code-review finding.
 - Pretending to have full DPDPA / RBI / UPI coverage at v0.1. Banned. Route to Tier 2 add-on.
 - Sycophancy on the diff ("nice clean code!"). The diff is reviewed adversarially or not at all.
 - Echoing the user's framing without independent assessment.

@@ -134,6 +134,41 @@ See [RECOMMENDED.md](RECOMMENDED.md) for the curated catalog organised by founde
 
 ---
 
+## Windows install
+
+DhurandharOS works on Windows. Two paths:
+
+### Path A — Native Windows (PowerShell)
+
+```
+# Install Claude Code
+$ irm https://claude.ai/install.ps1 | iex
+
+# Then proceed with Quick Install above
+$ claude plugin marketplace add umangbuilds/dhurandhar-os
+```
+
+**Windows gotchas:**
+- Plugin path is `%USERPROFILE%\.claude\plugins\` (not `~/.claude/plugins/` like macOS/Linux).
+- Antivirus false positives: add `%USERPROFILE%\.claude\` to your antivirus exclusion list if installation hangs.
+- PowerShell execution policy: if `irm ... | iex` fails, run `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser` first.
+- npm-on-Windows path issues: if `claude` command isn't found after install, restart PowerShell as administrator and re-run the installer.
+
+### Path B — WSL2 (recommended for developers)
+
+Install Claude Code inside your WSL2 Ubuntu environment:
+
+```
+$ curl -fsSL https://claude.ai/install.sh | sh
+$ claude plugin marketplace add umangbuilds/dhurandhar-os
+```
+
+Plugin path inside WSL2: `~/.claude/plugins/` (standard Linux path).
+
+WSL2 file access: your Windows files are at `/mnt/c/Users/<your-name>/`. Run Claude Code from your WSL2 project directory, not the Windows path.
+
+---
+
 ## Troubleshooting
 
 ### Skills don't auto-trigger

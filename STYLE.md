@@ -51,7 +51,7 @@ These break the voice. Lint enforces them before every commit.
 - **Sycophancy.** "Great question," "Excellent point," "I love this idea," "Brilliant!" — all banned. The user's idea is good or it is not. Say which.
 - **US-default frames.** Assuming Bay Area, assuming Y Combinator, assuming Series A, assuming Stripe-as-payment-rail, assuming W2 employment law, assuming 401(k). Every default must translate to the Indian builder's reality or it does not ship.
 - **Sanskrit-as-theatre.** No "yathaa raja, tathaa praja" for vibes. The name is enough Sanskrit.
-- **Competitor PSP/aggregator names.** Razorpay, Cashfree, PhonePe, PayU, Paytm (in PSP context), Stripe India — all banned in user-facing copy. Use generic terms: payment gateway, PSP, payment aggregator, payments orchestrator.
+- **Competitor PSP/aggregator names in marketing copy.** Razorpay, Cashfree, PhonePe, PayU, Paytm (in PSP context), Stripe India — banned in marketing and mission copy (README except FAQ, INSTALL except troubleshooting, RECOMMENDED, ROADMAP, CONTRIBUTING, mission.md). Use generic terms: payment gateway, PSP, payment aggregator, payments orchestrator. **Exception — operational contexts:** when the user explicitly asks "which payment gateway?" or names a PSP they're using, operational skills (Deployment Advisor, Reviewer, PRD Writer) may name PSPs honestly. Marketing copy still bans all PSP names regardless.
 - **Founder's parallel venture.** MoltPe banned in shipped copy. Founder identity stays "13-year fintech operator in Bengaluru."
 - **Film references.** Ranveer Singh banned. "Dhurandhar" banned when referring to the film (not the package). No character snippets, no dialogue echoes.
 - **US slang.** "dude," "y'all," "guys" — banned. Use "operator," "founder," "you," "the team."
@@ -86,7 +86,9 @@ These break the voice. Lint enforces them before every commit.
 
 ## Lint rules — banned tokens (enforced before every commit)
 
-The following regex patterns must return zero hits in user-facing files (skills/, examples/, README.md, INSTALL.md, CONTRIBUTING.md, RECOMMENDED.md, ROADMAP.md, mission.md, docs/) — except inside this STYLE.md and docs/voice-guide.md where they appear as anti-pattern examples.
+The following regex patterns must return zero hits in user-facing files — except inside the explicitly allowed contexts listed per rule. The context-aware lint script is at `scripts/lint-banned-tokens.sh`.
+
+PSP names are allowed in: `STYLE.md`, `docs/voice-guide.md`, `DECISIONS.md`, `CONTRIBUTING.md`, `tests/`, `skills/deployment-advisor/SKILL.md`, `skills/reviewer/SKILL.md` (review of integration code), `skills/prd-writer/SKILL.md` (payment provider field), and the README FAQ section only.
 
 ```
 # Competitor brands

@@ -5,12 +5,14 @@
 
 set -euo pipefail
 
-ALLOWED_PSP="STYLE.md|docs/voice-guide.md|DECISIONS.md|CONTRIBUTING.md|tests/"
-ALLOWED_MOLTPE="STYLE.md|docs/voice-guide.md|DECISIONS.md|CONTRIBUTING.md|tests/"
-ALLOWED_FILM="STYLE.md|docs/voice-guide.md|DECISIONS.md|CONTRIBUTING.md"
-# bhai/namaste: allowed in anti-pattern examples (SKILL.md), test criteria (tests/), meta-docs (DECISIONS.md, CONTRIBUTING.md)
-ALLOWED_BHAI="STYLE.md|docs/voice-guide.md|tests/|DECISIONS.md|CONTRIBUTING.md|skills/soul-keeper/SKILL.md"
-ALLOWED_NAMASTE="STYLE.md|docs/voice-guide.md|tests/|DECISIONS.md|CONTRIBUTING.md|skills/soul-keeper/SKILL.md"
+# PSP: allowed in operational skills (deployment-advisor, reviewer PSP notes, prd-writer), meta-docs, tests
+ALLOWED_PSP="STYLE.md|docs/voice-guide.md|DECISIONS.md|CONTRIBUTING.md|tests/|skills/deployment-advisor/SKILL.md|skills/reviewer/SKILL.md|skills/prd-writer/SKILL.md"
+# docs/test-results-* documents lint check names so must be allowed for meta tokens
+ALLOWED_MOLTPE="STYLE.md|docs/voice-guide.md|DECISIONS.md|CONTRIBUTING.md|tests/|docs/test-results"
+ALLOWED_FILM="STYLE.md|docs/voice-guide.md|DECISIONS.md|CONTRIBUTING.md|docs/test-results"
+# bhai/namaste: allowed in anti-pattern examples, test criteria, meta-docs, test-results docs
+ALLOWED_BHAI="STYLE.md|docs/voice-guide.md|tests/|DECISIONS.md|CONTRIBUTING.md|skills/soul-keeper/SKILL.md|docs/test-results"
+ALLOWED_NAMASTE="STYLE.md|docs/voice-guide.md|tests/|DECISIONS.md|CONTRIBUTING.md|skills/soul-keeper/SKILL.md|docs/test-results"
 # US slang: allowed in CONTRIBUTING.md (documenting the lint regex itself)
 ALLOWED_SLANG="STYLE.md|docs/voice-guide.md|CONTRIBUTING.md"
 
