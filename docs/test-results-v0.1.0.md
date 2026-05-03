@@ -72,13 +72,13 @@ All six Tier 1 skills meet the TDD-for-skills bar at v0.1.0 release.
 
 Banned-tokens lint executed across the user-facing file set (skills/, examples/, README.md, INSTALL.md, CONTRIBUTING.md, RECOMMENDED.md, ROADMAP.md, mission.md, docs/).
 
-- Competitor brands: 0 hits outside allowed contexts (STYLE.md, voice-guide.md, DECISIONS.md, lint-regex commands).
-- MoltPe: 0 hits outside allowed contexts.
-- Film references (Ranveer Singh, Dhurandhar-as-film): 0 hits outside allowed contexts.
-- Emoji: 0 hits across the repo.
-- US-default slang (dude / y'all / guys): 0 hits.
-- "bhai" outside vernacular-mirroring trigger context: 1 defensive reference in `skills/soul-keeper/SKILL.md` anti-patterns section, documented in DECISIONS.md as structurally required.
-- "namaste" as opener: 0 hits in shipped opener position. 2 defensive references in anti-pattern / test-criterion context, documented in DECISIONS.md.
+- Competitor PSP brands: 0 hits outside allowed contexts (STYLE.md, voice-guide.md, DECISIONS.md, lint-regex commands).
+- Founder's parallel venture: 0 hits outside allowed contexts.
+- Film references: 0 hits outside allowed contexts.
+- Emoji: 0 hits in shipped user-facing copy. 1 defensive reference inside a STYLE.md "no voice" anti-pattern example (allowed).
+- US-default slang: 0 hits in shipped copy outside lint-regex commands.
+- Vernacular default-address pattern: 1 defensive reference in `skills/soul-keeper/SKILL.md` anti-patterns section, documented in DECISIONS.md.
+- Forbidden opener pattern: 0 hits in shipped opener position. 2 defensive references in anti-pattern / test-criterion context, documented in DECISIONS.md.
 
 **Lint status: clean for v0.1.0 release.**
 
