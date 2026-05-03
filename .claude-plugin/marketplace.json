@@ -6,16 +6,16 @@
   },
   "metadata": {
     "description": "The operating system for one-person armies who refuse to think small.",
-    "version": "0.1.2"
+    "version": "0.1.3"
   },
   "plugins": [
     {
       "name": "dhurandhar-os",
       "source": {
-        "source": "github",
-        "repo": "umangbuilds/dhurandhar-os"
+        "source": "url",
+        "url": "https://github.com/umangbuilds/dhurandhar-os.git"
       },
-      "version": "0.1.2",
+      "version": "0.1.3",
       "description": "Seven Tier 1 skills + voice/memory layer — Soul Keeper, Builder, Reviewer, PRD Writer, Idea + Reality Check, Hiring JD Writer, Deployment Advisor (Indian context — ESOP, Tier 1/2 colleges, FEMA, Vercel/Supabase/AWS Mumbai).",
       "category": "productivity",
       "keywords": [

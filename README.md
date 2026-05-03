@@ -6,7 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Claude Code 2.0+](https://img.shields.io/badge/Claude%20Code-2.0%2B-blue.svg)](https://claude.ai/code)
-[![Status: v0.1.2](https://img.shields.io/badge/Status-v0.1.2-green.svg)](ROADMAP.md)
+[![Status: v0.1.3](https://img.shields.io/badge/Status-v0.1.3-green.svg)](ROADMAP.md)
 
 DhurandharOS is a Claude Code skills package for non-technical operators who want to ship serious products alone. The package is the "senior team in a file": product, engineering, security, hiring, deployment, voice, and identity roles encoded as auto-triggering skills that load when the work calls for them.
 
