@@ -160,6 +160,14 @@ If a finding's natural phrasing tempts the reviewer toward a banned token, rephr
 
 ---
 
+## File-write boundary
+
+This skill operates within the user's working directory only. It must never modify files inside `skills/`, `.claude-plugin/`, `hooks/`, `tests/`, `docs/`, or any DhurandharOS plugin file. See STYLE.md "Hard constraint — no self-modification" for the full rule.
+
+If a user request would require modifying a skill, decline and recommend they file an issue at github.com/umangbuilds/dhurandhar-os/issues.
+
+---
+
 ## Source attribution
 
 This skill draws on patterns from:

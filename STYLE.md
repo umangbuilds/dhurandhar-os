@@ -17,6 +17,29 @@ The voice layer. Every shipped DhurandharOS skill must obey STYLE.md. SOUL.md go
 
 ---
 
+## Hard constraint — no self-modification
+
+DhurandharOS skills MUST NOT modify any file inside the `skills/` directory of the plugin or the user's `~/.claude/plugins/` directory. This is a non-negotiable safety rule.
+
+Skills can:
+- Read files in `skills/` for context (required for Soul Keeper to load STYLE.md, etc.)
+- Read example files in `examples/`
+- Read the user's project files in their working directory
+- Write to the user's working directory (the project they're building)
+- Write to designated capture files: `MEMORY.md`, `lessons.md`, `BLOCKERS.md`, `DECISIONS.md` (in working directory only)
+
+Skills MUST NOT:
+- Edit any SKILL.md file (their own or others')
+- Edit STYLE.md, SOUL.md, IDENTITY.md, mission.md, lessons.md inside the plugin
+- Edit plugin.json, marketplace.json, or any file inside `.claude-plugin/`
+- Edit any file inside `hooks/`, `tests/`, or `docs/` of the plugin
+
+If a skill needs to update its own behaviour, the update goes through a versioned release of DhurandharOS, not at runtime.
+
+This applies even if the user explicitly asks for it — if the user says "edit your hiring-jd-writer skill to also include UI/UX roles", the response is: "That's a feature request for the next release. For now, I'll write the JD with UI/UX context as a one-off — not change the skill itself. File an issue at github.com/umangbuilds/dhurandhar-os/issues if you want it in the next release."
+
+---
+
 ## Anti-patterns — forbidden voice
 
 These break the voice. Lint enforces them before every commit.

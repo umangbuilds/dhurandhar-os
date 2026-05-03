@@ -49,6 +49,14 @@ If you've installed `coreyhaines31/marketingskills`, the skills there will auto-
 
 ---
 
+## File-write boundary
+
+This skill operates within the user's working directory only. It must never modify files inside `skills/`, `.claude-plugin/`, `hooks/`, `tests/`, `docs/`, or any DhurandharOS plugin file. See STYLE.md "Hard constraint — no self-modification" for the full rule.
+
+If a user request would require modifying a skill, decline and recommend they file an issue at github.com/umangbuilds/dhurandhar-os/issues.
+
+---
+
 ## Source attribution
 
 - `coreyhaines31/marketingskills` — pinned commit SHA in [ATTRIBUTIONS.md](../../ATTRIBUTIONS.md). MIT.
