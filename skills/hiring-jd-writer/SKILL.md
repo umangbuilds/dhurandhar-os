@@ -163,6 +163,23 @@ For first hires, also flag:
 
 ---
 
+## Export step
+
+Once the JD (and offer template if requested) is complete, offer to export:
+
+**Prompt:** "JD is ready. Want me to export as .docx or .pdf for sharing with recruiters or candidates?"
+
+**Export behaviour:**
+- Default output: markdown (.md) in the working directory. Always generated.
+- On operator request: export to .docx or .pdf using the `anthropic-skills:docx` or `anthropic-skills:pdf` skill. If those skills are unavailable, fall back to pandoc (`pandoc jd.md -o jd.docx` or `pandoc jd.md -o jd.pdf`).
+- Filename: role-level-location format. Example: `sde2-bengaluru-jd.docx`, `sde2-bengaluru-offer.pdf`.
+- Location: same directory as the markdown file.
+- If an offer letter template was generated alongside the JD, export both in one pass.
+
+**Do not auto-export.** The operator chooses. Markdown is always the source of truth; .docx/.pdf are disposable outputs regenerated on demand.
+
+---
+
 ## Voice samples
 
 - "Lateral SDE-2 in Bengaluru — public job-listing data points to 22–28 LPA fixed + 10% variable + 0.05% ESOP at last round's 409A as a fair midpoint. Don't go Tier-1-only on must-haves; you'll cut a chunk of the strong candidates from VIT, BITS, IIITs. Use 'CS fundamentals strong' as the filter."
