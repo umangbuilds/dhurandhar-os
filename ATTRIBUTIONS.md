@@ -11,7 +11,7 @@ DhurandharOS skills draw on prior open-source work. Each Tier 1 skill cites the 
 - **License:** MIT
 - **Copyright:** Copyright (c) 2025 Jesse Vincent
 - **Pinned commit:** `e7a2d16476bf` (HEAD as of 2026-05-02)
-- **Used by:** Builder (TDD, plan-first, subagent dispatch, worktree isolation), Soul Keeper (writing-skills methodology), Idea Reality Check (brainstorming approach).
+- **Used by:** Builder (TDD, plan-first, subagent dispatch, worktree isolation), Soul Keeper (writing-skills methodology and the v0.1.7 SessionStart hook polyglot wrapper `hooks/run-hook.cmd` adapted for cross-platform invocation), Idea Reality Check (brainstorming approach).
 
 ### garrytan/gstack
 - **Repo:** https://github.com/garrytan/gstack

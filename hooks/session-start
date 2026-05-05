@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# DhurandharOS SessionStart hook — injects soul-keeper context at session boot.
+# Goal: ensure soul-keeper runs before any other plugin's session-start skill
+# wins the trigger race in environments with multiple plugins installed.
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PLUGIN_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+
+# Read soul-keeper SKILL.md content
+soul_keeper_content=$(cat "${PLUGIN_ROOT}/skills/soul-keeper/SKILL.md" 2>&1 || echo "Error reading soul-keeper skill")
+
+# Escape string for JSON embedding using bash parameter substitution.
+escape_for_json() {
+    local s="$1"
+    s="${s//\\/\\\\}"
+    s="${s//\"/\\\"}"
+    s="${s//$'\n'/\\n}"
+    s="${s//$'\r'/\\r}"
+    s="${s//$'\t'/\\t}"
+    printf '%s' "$s"
+}
+
+soul_keeper_escaped=$(escape_for_json "$soul_keeper_content")
+
+# Strong preamble — the model sees this as system-level context.
+# Asserts soul-keeper precedence over any other plugin's session-start skill.
+preamble="<EXTREMELY_IMPORTANT>\nDhurandharOS is loaded. Before any other action this session, you MUST run the soul-keeper session-start ritual:\n\n1. Resolve and read SOUL.md, STYLE.md, IDENTITY.md, MEMORY.md, lessons.md from the working directory first; fall back to the plugin cache at ~/.claude/plugins/cache/dhurandhar-os/dhurandhar-os/<latest>/ if not found.\n2. Calibrate voice to the 80/15/5 Pan-Indian English rhythm specified in STYLE.md.\n3. Apply the mirror principle to the user's first input register.\n4. Open the first response with the calibrated one-line ack: \\\"Soul loaded. DhurandharOS identity calibrated. Where do we start?\\\" (or close variant). Never ask the operator to define identity from scratch — DhurandharOS identity is shipped, never configured.\n\nThis takes precedence over generic session-start behaviour from other plugins. If another plugin also has a session-start skill (e.g. superpowers' productivity:start), run soul-keeper FIRST, then yield.\n\nFull soul-keeper SKILL.md follows for reference:\n\n"
+
+session_context="${preamble}${soul_keeper_escaped}\n</EXTREMELY_IMPORTANT>"
+
+# Output context injection as JSON.
+# Cursor hooks expect additional_context (snake_case).
+# Claude Code hooks expect hookSpecificOutput.additionalContext (nested).
+# Copilot CLI and others expect additionalContext (top-level, SDK standard).
+if [ -n "${CURSOR_PLUGIN_ROOT:-}" ]; then
+  printf '{\n  "additional_context": "%s"\n}\n' "$session_context"
+elif [ -n "${CLAUDE_PLUGIN_ROOT:-}" ] && [ -z "${COPILOT_CLI:-}" ]; then
+  printf '{\n  "hookSpecificOutput": {\n    "hookEventName": "SessionStart",\n    "additionalContext": "%s"\n  }\n}\n' "$session_context"
+else
+  printf '{\n  "additionalContext": "%s"\n}\n' "$session_context"
+fi
+
+exit 0
