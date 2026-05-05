@@ -113,6 +113,16 @@ For tasks longer than ~50 lines or spanning >2 files, Builder spawns a subagent:
 
 ---
 
+## Visual Output — Delegate to UI Designer
+
+When your build task produces anything visual — a page, screen, component, dashboard, email template — invoke the UI Designer skill BEFORE writing any HTML/CSS/JSX.
+
+Read `${CLAUDE_PLUGIN_ROOT}/skills/ui-designer/SKILL.md` and apply its design rules. Do NOT make your own font, colour, or layout decisions. UI Designer makes those decisions. You implement them.
+
+If `.design-system.md` exists in the operator's working directory (from a previous design-shotgun choice), load it and apply the saved palette and fonts. Do not re-ask.
+
+---
+
 ## Post-Build Review (mandatory)
 
 After completing any build task — full feature, fix, component, or script — you MUST run a review pass before presenting results to the user.

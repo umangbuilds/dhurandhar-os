@@ -104,6 +104,28 @@ When the diff contains data fields that look like personal data (Indian context)
 
 ---
 
+## Visual output — design quality gate
+
+When the build included visual output (HTML, CSS, JSX, a landing page, dashboard, or app screen), check against UI Designer's anti-AI-slop gate before approving:
+
+1. Would a funded Indian startup put this on their homepage? If not, flag it.
+2. Can you tell it is AI-generated from the screenshot alone? (Generic font + gradient header + 3-col cards = AI tell.) Flag it.
+3. Is there a grid of 3 identical cards with icon + headline + paragraph as the main content pattern? Flag it.
+4. Is the headline font Inter, Roboto, Poppins, or Arial? Flag it.
+5. Is there a purple-to-blue gradient on a white background? Flag it.
+
+Any design quality failure is a MEDIUM finding. Format as:
+
+```
+[MEDIUM] [file.html] Design quality gate failure
+  Exploit path: AI-default aesthetics undermine product credibility.
+  Fix: load UI Designer skill and apply product-category-appropriate palette and headline font.
+```
+
+Cap design findings at 1 of the 5 allowed slots per pass.
+
+---
+
 ## Slop scanner
 
 From `garrytan/gstack/review` — Reviewer also scans for:

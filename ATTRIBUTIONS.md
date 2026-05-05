@@ -18,7 +18,42 @@ DhurandharOS skills draw on prior open-source work. Each Tier 1 skill cites the 
 - **License:** MIT
 - **Copyright:** Copyright (c) 2026 Garry Tan
 - **Pinned commit:** `b512be7117ed`
-- **Used by:** Builder (careful / freeze / guard patterns converted from slash to auto-trigger), Reviewer (slop scanner, paranoid-engineer enum-completeness check).
+- **Used by:** Builder (careful / freeze / guard patterns converted from slash to auto-trigger), Reviewer (slop scanner, paranoid-engineer enum-completeness check), UI Designer (design-shotgun anti-convergence variant pattern, taste-memory, DESIGN.md persistence concept).
+
+### anthropics/claude-code (frontend-design plugin)
+- **Repo:** https://github.com/anthropics/claude-code
+- **License:** MIT
+- **Copyright:** Copyright (c) 2025 Anthropic
+- **Pinned commit:** HEAD as of 2026-05-06
+- **Used by:** UI Designer (banned-fonts list, CSS custom-property design-token pattern, "bold aesthetic direction before coding" principle, purple-gradient ban).
+
+### Leonxlnx/taste-skill
+- **Repo:** https://github.com/Leonxlnx/taste-skill
+- **License:** MIT
+- **Copyright:** Copyright (c) 2025 Leonxlnx
+- **Pinned commit:** HEAD as of 2026-05-06
+- **Used by:** UI Designer (anti-purple gate, concrete font alternatives pattern — Geist/Satoshi/Fraunces naming convention).
+
+### nextlevelbuilder/ui-ux-pro-max-skill
+- **Repo:** https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
+- **License:** MIT
+- **Copyright:** Copyright (c) 2025 NextLevelBuilder
+- **Pinned commit:** HEAD as of 2026-05-06 (v2.5.0)
+- **Used by:** UI Designer (industry-aligned palette concept, auto-activation trigger structure, font-pairing-with-mood-label pattern).
+
+### Dammyjay93/interface-design
+- **Repo:** https://github.com/Dammyjay93/interface-design
+- **License:** MIT
+- **Copyright:** Copyright (c) 2025 Dammyjay93
+- **Pinned commit:** HEAD as of 2026-05-06
+- **Used by:** UI Designer ("decisions compound" pattern, `.design-system.md` persistence convention, "coherent system with imperfect values beats scattered interface with correct ones").
+
+### HermeticOrmus/LibreUIUX-Claude-Code
+- **Repo:** https://github.com/HermeticOrmus/LibreUIUX-Claude-Code
+- **License:** MIT
+- **Copyright:** Copyright (c) 2025 HermeticOrmus
+- **Pinned commit:** HEAD as of 2026-05-06
+- **Used by:** UI Designer (WCAG 2.1 AA accessibility floor: 4.5:1 contrast ratio, 44×44px touch targets).
 
 ### agamm/claude-code-owasp
 - **Repo:** https://github.com/agamm/claude-code-owasp

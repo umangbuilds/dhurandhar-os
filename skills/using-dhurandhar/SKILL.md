@@ -7,7 +7,7 @@ license: MIT
 
 # Using DhurandharOS
 
-The orchestration layer for the six DhurandharOS Tier 1 skills. Use this routing table on every user message before deciding which skill to load.
+The orchestration layer for the seven DhurandharOS Tier 1 skills. Use this routing table on every user message before deciding which skill to load.
 
 ---
 
@@ -19,6 +19,7 @@ The orchestration layer for the six DhurandharOS Tier 1 skills. Use this routing
 | **Idea + Reality Check** | "I want to build...", "should I...", "thinking about...", "what if...", "I'm considering...", "pivoting...", new ideas, risky decisions, overcomplicated plans. Refuses to ship code without three named first paying users. |
 | **PRD Writer** | "spec this", "write requirements", "PRD", "let's design the feature", "scope this", "lock the spec". |
 | **Builder** | "build this", "implement", "ship it", "code this", "write the function", "create the endpoint", any concrete build/create request after the spec is locked. |
+| **UI Designer** | "design", "UI", "UX", "landing page", "homepage", "website", "app screen", "dashboard", "make this look good", "fix the design", "this looks ugly", "redesign", any visual build request — AND auto-invoked by Builder for any task that produces HTML/CSS/JSX output. Builder handles logic; UI Designer handles aesthetics. UI Designer's visual decisions override Builder's defaults. |
 | **Reviewer** | "review this", "check this code", "is this safe?", git diff, PR creation — AND automatically after Builder completes ANY build task. |
 | **Deployment Advisor** | "deploy", "hosting", "where should I host", "what infra", "cloud setup", "going live", "production setup", "Vercel", "Supabase", "AWS", "scaling". |
 | **Launch + Marketer** | "help me launch", "write copy", marketing/launch requests. v0.1 stub — responds with "coming in v0.2" and points to coreyhaines31/marketingskills. |
@@ -29,13 +30,15 @@ The orchestration layer for the six DhurandharOS Tier 1 skills. Use this routing
 
 1. **After Builder completes ANY build task, ALWAYS run Reviewer before presenting results to the user.** No exceptions. This is enforced inside Builder's Post-Build Review section.
 
-2. **Idea + Reality Check runs before Builder** when the operator phrases a request as a new idea ("I want to build X", "should I build Y"). Do not jump to code until Idea + Reality Check has surfaced the customer question and the operator has named at least one first paying user.
+2. **When Builder produces visual output, UI Designer's rules apply automatically.** Builder handles logic. UI Designer handles aesthetics. Load UI Designer before writing any HTML/CSS/JSX. UI Designer's visual decisions override Builder's defaults.
 
-3. **PRD Writer runs before Builder** when the build is non-trivial (more than a single function or script). The locked spec is the input Builder works from. For trivial scripts ("rename this variable across the file"), skip the PRD step.
+3. **Idea + Reality Check runs before Builder** when the operator phrases a request as a new idea ("I want to build X", "should I build Y"). Do not jump to code until Idea + Reality Check has surfaced the customer question and the operator has named at least one first paying user.
 
-4. **If no skill matches:** respond normally but maintain Soul Keeper's voice (80/15/5, no banned tokens, mirror principle).
+4. **PRD Writer runs before Builder** when the build is non-trivial (more than a single function or script). The locked spec is the input Builder works from. For trivial scripts ("rename this variable across the file"), skip the PRD step.
 
-5. **Skills can chain.** Idea Reality Check → PRD Writer → Builder → Reviewer is the canonical end-to-end flow. Do not skip steps without an explicit operator override.
+5. **If no skill matches:** respond normally but maintain Soul Keeper's voice (80/15/5, no banned tokens, mirror principle).
+
+6. **Skills can chain.** Idea Reality Check → PRD Writer → Builder (+ UI Designer for visual output) → Reviewer is the canonical end-to-end flow. Do not skip steps without an explicit operator override.
 
 ---
 
