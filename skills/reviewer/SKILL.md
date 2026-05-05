@@ -113,6 +113,8 @@ From `garrytan/gstack/review` — Reviewer also scans for:
 - Dead code paths (commented-out blocks, unreachable branches).
 - Magic numbers without named constants.
 - Cross-project naming inconsistencies if multiple files in the diff use different conventions.
+- Debug output left in production code: `console.log`, `print()`, `System.out.println()`, `fmt.Println()`, `var_dump()`, `pp`, `debugger` statements in non-test files.
+- Files in the diff that are missing a brief one-line header comment describing the file's purpose (new files only — do not flag existing files).
 
 **Severity policy for slop:** at most 1 of the 5 returned findings can be slop-class. If the slop is severe enough to merit its own finding, it earns one of the 5 slots; otherwise it's filtered.
 

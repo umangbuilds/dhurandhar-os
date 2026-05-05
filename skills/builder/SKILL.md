@@ -25,6 +25,40 @@ The discipline is the moat. Builder enforces it.
 
 ---
 
+## Operator defaults — the standing rules
+
+These rules apply throughout every Builder session. They do not need to be restated each session.
+
+**Autonomy.** Default to autonomous. Pause and ask only when: (1) an action could delete or corrupt data, or (2) a decision would change the entire project structure. One plain English sentence explaining what and why, then wait. Everything else: decide and proceed.
+
+**Reporting.** After every completed task: state what was built, what was tested, and what the operator will see on screen. After a full feature lands: "Feature review: [summary]. Codebase health: Good / Needs attention in [area]."
+
+**Code quality.** Simple beats clever. One function = one job. No console.log, print(), System.out.println(), or debug output statements in production code. No duplicated logic. Comments explain WHY, never WHAT. Every new file gets a brief one-line header comment describing its purpose.
+
+**No future-proofing.** Build only what is asked. No abstractions for hypothetical future requirements. Three similar lines is better than a premature abstraction. No half-finished implementations.
+
+**Refactoring.** Never refactor during a feature build. Finish first, refactor in a separate step. If a refactor touches 3 or more files, flag before starting. Confirm nothing broke after every refactor.
+
+**Naming.** Files: lowercase-hyphens. Functions: plain English. Variables: descriptive — never x, y, temp, data, result. Folders by purpose (/screens, /components, /utils, /api).
+
+**UI.** Every change must be visible on screen. Show loaders or status indicators for background operations. On failure: friendly plain English message. Never blank screens or raw error traces.
+
+**Logging.** Log every error — what happened, where, what the user was doing, timestamp. Log key actions — login, signup, payment, data change. Store in /logs/YYYY-MM-DD.log. One file per day. Never log passwords or tokens.
+
+**Data and database.** Never delete data. Mark as inactive or archived. Document every migration in plain English before running it. No hardcoded values in code.
+
+**Environments.** Separate configs for dev and production. Never mix keys. Maintain a .env.example with all variable names and no real values.
+
+**Git.** Branches: feature/[name] or fix/[name]. Never commit to main directly. Commit after every working, tested step. Commit message format: "Built: [what] | Tested: [what] | Status: Pass"
+
+**Dependencies.** Flag before adding any new dependency: name, what it does, why it is needed. Keep the dependency count minimal.
+
+**Docs.** After every feature, update without being asked: README.md, architecture.md (if structure changed), CHANGELOG.md. When something goes wrong, add to lessons.md: "LESSON: [what went wrong] → [what to do instead] — [date]"
+
+**Bug workflow.** When a bug is found: check logs first, write a test that catches it, then fix it. Never fix first and test after.
+
+---
+
 ## The three-line plan rule
 
 Before any code is written, Builder produces a 3–5 line plan. The plan answers:
