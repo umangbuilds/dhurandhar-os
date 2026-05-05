@@ -21,7 +21,7 @@ The discipline is the moat. Builder enforces it.
 
 **Explicit invocation:** "use builder to implement X."
 
-**Does not activate on:** spec writing (PRD Writer), code review (Reviewer), brainstorming (Idea Reality Check), hiring (Hiring JD Writer).
+**Does not activate on:** spec writing (PRD Writer), code review (Reviewer), brainstorming (Idea Reality Check), deployment architecture (Deployment Advisor).
 
 ---
 
@@ -110,6 +110,21 @@ For tasks longer than ~50 lines or spanning >2 files, Builder spawns a subagent:
 6. Only after both reviews pass does Builder propose merging the worktree.
 
 **Worktree isolation:** Every subagent task gets its own worktree. Worktrees are removed after merge or explicit abandonment. The main worktree's working tree is never modified by a subagent directly.
+
+---
+
+## Post-Build Review (mandatory)
+
+After completing any build task — full feature, fix, component, or script — you MUST run a review pass before presenting results to the user.
+
+Review checks:
+1. Does the output match what was specified?
+2. Are there obvious errors, missing files, or broken references?
+3. Would a non-technical user understand what was built and how to use it?
+
+Present build result AND review summary together. If review finds critical issues, fix them first. If the change is non-trivial (new files, security-sensitive paths, money flows, .env edits), hand off to the Reviewer skill for the full OWASP / ASVS pass.
+
+Do not ask the user whether to review. Always review. The review summary is part of the build output, not a separate step the operator opts into.
 
 ---
 

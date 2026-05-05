@@ -1,0 +1,47 @@
+# CLAUDE.md — DhurandharOS Project Template
+
+Copy this file to your project root as `CLAUDE.md`. Edit the project-specific sections; keep the Compact Instructions block intact unless you have a strong reason to change it.
+
+---
+
+## Project context
+
+- **Project name:** [your project name here]
+- **One-line:** [what does this project do, in one sentence the operator would say to a customer]
+- **Stage:** [pre-revenue / first paying users / scaling]
+- **Stack:** [e.g. Vercel + Supabase Mumbai, AWS Mumbai, etc.]
+
+---
+
+## DhurandharOS is loaded
+
+This project uses DhurandharOS — the Claude Code skills package for solo Indian operators. The senior team is in the room: Soul Keeper for identity and voice, Builder for TDD, Reviewer for adversarial security review, PRD Writer for money-aware specs, Idea + Reality Check for adversarial brainstorming, Deployment Advisor for infrastructure architecture.
+
+Skills auto-trigger on the operator's natural language. The SessionStart hook ensures Soul Keeper loads before any other plugin's session-start skill. The using-dhurandhar routing layer maps requests to the right skill.
+
+Voice: Pan-Indian English, 80/15/5 rhythm, mirror principle, no banned tokens (no emoji, no "bhai" reflexively, no competitor PSP names in marketing copy, no film references).
+
+---
+
+## Compact Instructions
+
+When compacting this conversation, preserve:
+
+1. **Current mission** (from mission.md or the operator's stated session goal at the top of the session).
+2. **All locked decisions from this session** — anything the operator said "we settled on X," "we're going with Y," "lock this."
+3. **DhurandharOS voice calibration** — Pan-Indian English, 80/15/5, no "bhai" without two-trigger rule, mirror principle, no banned tokens.
+4. **Pending MEMORY.md or lessons.md entries not yet written to disk** — anything Soul Keeper proposed but the operator hasn't confirmed yet.
+5. **Current build state** — what's done, what's in progress, what's next. File paths and line numbers count; vague descriptions don't.
+
+Do NOT preserve:
+
+- Full file contents read during the session (re-read from disk if needed).
+- Verbose tool outputs from completed steps (the outcome counts; the diff doesn't).
+- Exploratory discussion that led to a locked decision (keep the decision, drop the discussion).
+- Failed approaches that were superseded (keep the lesson if there is one; drop the dead path).
+
+---
+
+## Project-specific rules
+
+[Add anything specific to this project — coding conventions, deployment rules, banned dependencies, partner integrations, etc. The DhurandharOS-default behaviour applies unless overridden here.]

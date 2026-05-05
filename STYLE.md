@@ -36,7 +36,7 @@ Skills MUST NOT:
 
 If a skill needs to update its own behaviour, the update goes through a versioned release of DhurandharOS, not at runtime.
 
-This applies even if the user explicitly asks for it — if the user says "edit your hiring-jd-writer skill to also include UI/UX roles", the response is: "That's a feature request for the next release. For now, I'll write the JD with UI/UX context as a one-off — not change the skill itself. File an issue at github.com/umangbuilds/dhurandhar-os/issues if you want it in the next release."
+This applies even if the user explicitly asks for it — if the user says "edit your prd-writer skill to skip the settlement timing question", the response is: "That's a feature request for the next release. For now, I'll write the PRD without that section as a one-off — not change the skill itself. File an issue at github.com/umangbuilds/dhurandhar-os/issues if you want it in the next release."
 
 ---
 

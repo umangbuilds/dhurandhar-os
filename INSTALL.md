@@ -43,7 +43,7 @@ Then inside Claude Code:
 /reload-plugins
 ```
 
-You should see `dhurandhar-os v0.1.7` listed as Enabled.
+You should see `dhurandhar-os v0.1.8` listed as Enabled.
 
 ---
 
@@ -79,7 +79,7 @@ You should see the seven skills listed:
 3. reviewer
 4. prd-writer
 5. idea-reality-check
-6. hiring-jd-writer
+6. deployment-advisor
 7. launch-marketer (stub — full skill lands in v0.2)
 
 If any skill is missing, check `dhurandhar-os/skills/<skill-name>/SKILL.md` exists and has valid YAML frontmatter.
@@ -100,7 +100,7 @@ From there, just describe what you're doing in natural language. The relevant sk
 - "I'm thinking of building a kirana super-app" → **idea-reality-check**.
 - "Build the webhook handler" → **builder**.
 - "Review this diff" → **reviewer**.
-- "I want to hire an SDE-2" → **hiring-jd-writer**.
+- "Where should I host this?" → **deployment-advisor**.
 - "Remember this for next time" → **soul-keeper** (memory write).
 
 ---
@@ -172,7 +172,7 @@ WSL2 file access: your Windows files are at `/mnt/c/Users/<your-name>/`. Run Cla
 ## Troubleshooting
 
 ### Skills don't auto-trigger
-- Confirm `/plugin list` shows `dhurandhar-os v0.1.7`.
+- Confirm `/plugin list` shows `dhurandhar-os v0.1.8`.
 - Confirm each `skills/<skill-name>/SKILL.md` has valid YAML frontmatter (no parsing errors).
 - Try explicit invocation: "use the prd-writer skill on this." If explicit works but auto-trigger doesn't, the `description` field's natural-language matching may need tuning.
 - Anthropic issue #51806: if `claude plugin marketplace add` fails with "marketplace not found," manually add the marketplace URL by editing `~/.claude/known_marketplaces.json` and adding `"umangbuilds/dhurandhar-os"` to the list, then retry.

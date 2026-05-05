@@ -21,12 +21,12 @@ Six Tier 1 skills, each with explicit auto-trigger conditions in YAML frontmatte
 ```
 session-start  → Soul Keeper loads identity + memory
    │
-   ├── operator says "let's build / implement / ship"  → Builder
-   ├── operator says "spec / PRD / lock the requirements" → PRD Writer
-   ├── operator says "idea / should I build / pivot"     → Idea Reality Check
-   ├── operator says "hire / JD / role / comp"           → Hiring JD Writer
-   ├── git diff / PR / "review this"                     → Reviewer
-   └── operator says "remember / log / lesson"           → Soul Keeper (memory write)
+   ├── operator says "let's build / implement / ship"     → Builder (auto-runs Reviewer post-build)
+   ├── operator says "spec / PRD / lock the requirements"  → PRD Writer
+   ├── operator says "idea / should I build / pivot"       → Idea Reality Check
+   ├── operator says "deploy / hosting / where to host"    → Deployment Advisor
+   ├── git diff / PR / "review this"                       → Reviewer
+   └── operator says "remember / log / lesson"             → Soul Keeper (memory write)
 
 session-end → Soul Keeper prompts for memory + lessons capture
 ```
@@ -47,12 +47,12 @@ Memory is sacred. Append-only. Never silently rewritten. When the file gets long
 
 | Skill | Source(s) | Length target | What it does |
 |---|---|---|---|
-| Soul Keeper | aaronjmars/soul.md, obra/private-journal-mcp | 200–400 lines | Identity load + memory + lesson capture + voice enforcement |
-| Builder | obra/superpowers, garrytan/gstack | 350–500 lines | TDD-first + plan-first + destructive-command guards + worktree isolation |
+| Soul Keeper | aaronjmars/soul.md, obra/private-journal-mcp | 200–400 lines | Identity load (cache fallback) + memory + lesson capture + voice enforcement + SessionStart hook precedence |
+| Builder | obra/superpowers, garrytan/gstack | 350–500 lines | TDD-first + plan-first + destructive-command guards + worktree isolation + mandatory post-build review |
 | Reviewer | agamm/claude-code-owasp, anthropics/claude-code-security-review, garrytan/gstack | 400–600 lines | OWASP/ASVS adversarial review + false-positive filter + Tier 2 routing |
 | PRD Writer | anthropics/knowledge-work-plugins, obra/superpowers | 400–500 lines | Money-aware spec + regulatory triggers + failure modes + reconciliation |
 | Idea Reality Check | obra/superpowers (brainstorming) | 300–500 lines | Adversarial brainstorm + Mom Test + Indian-context reframe |
-| Hiring JD Writer | naukri.com / public listings | 400–600 lines | India hiring intake + comp bands from public listings + ESOP/FEMA |
+| Deployment Advisor | AWS/Vercel/Supabase docs + Indian fintech post-mortems | 200–400 lines | Vercel + Supabase pre-revenue, AWS Mumbai for regulated production, migration triggers, PSP guidance on demand |
 | Launch + Marketer (stub) | coreyhaines31/marketingskills | 50–100 lines | v0.2 deferral pointer |
 
 All six Tier 1 skills derive their patterns from MIT-licensed sources, pinned to specific commit SHAs in [ATTRIBUTIONS.md](../ATTRIBUTIONS.md).
@@ -74,7 +74,7 @@ A slash command exists as fallback for power users, but it is not advertised in 
 
 ## Routing to Tier 2 add-ons
 
-DhurandharOS v0.1 ships universal solo-operator skills + one India-hiring wedge. It does not ship a DPDPA core skill, RBI Digital Lending core skill, or UPI Payments core skill. Those are deferred to v0.2.
+DhurandharOS v0.1 ships universal solo-operator skills + Deployment Advisor for Indian infrastructure context. It does not ship a Hiring JD Writer, DPDPA core skill, RBI Digital Lending core skill, or UPI Payments core skill. Those are deferred to v0.2.
 
 For the operator who needs DPDPA / RBI / UPI today, the Reviewer and PRD Writer skills route to Tier 2 recommendations:
 

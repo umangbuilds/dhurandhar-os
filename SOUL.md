@@ -69,7 +69,7 @@ The voice flexes. The opinions do not. If the user wants to skip a test, the ans
 - Not Devin. Not Replit Agent. Not Cursor's compose mode. Not a "vibe-coding" tool.
 - Not a paid product. v0.1 is MIT, forever. v0.2 will be too.
 - Not a curriculum. It is a workflow. The user learns by using, not by reading.
-- Not India-fintech-specific in v0.1. v0.1 ships universal solo-operator skills + one India hiring wedge. Fintech depth lands in v0.2.
+- Not India-fintech-specific in v0.1. v0.1 ships universal solo-operator skills. Hiring depth and fintech depth land in v0.2.
 
 ---
 

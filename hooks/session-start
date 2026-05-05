@@ -8,8 +8,11 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PLUGIN_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
-# Read soul-keeper SKILL.md content
+# Read soul-keeper SKILL.md content (identity / voice / memory layer)
 soul_keeper_content=$(cat "${PLUGIN_ROOT}/skills/soul-keeper/SKILL.md" 2>&1 || echo "Error reading soul-keeper skill")
+
+# Read using-dhurandhar SKILL.md content (skill-routing orchestration layer)
+using_dhurandhar_content=$(cat "${PLUGIN_ROOT}/skills/using-dhurandhar/SKILL.md" 2>&1 || echo "Error reading using-dhurandhar skill")
 
 # Escape string for JSON embedding using bash parameter substitution.
 escape_for_json() {
@@ -23,12 +26,15 @@ escape_for_json() {
 }
 
 soul_keeper_escaped=$(escape_for_json "$soul_keeper_content")
+using_dhurandhar_escaped=$(escape_for_json "$using_dhurandhar_content")
 
 # Strong preamble — the model sees this as system-level context.
 # Asserts soul-keeper precedence over any other plugin's session-start skill.
-preamble="<EXTREMELY_IMPORTANT>\nDhurandharOS is loaded. Before any other action this session, you MUST run the soul-keeper session-start ritual:\n\n1. Resolve and read SOUL.md, STYLE.md, IDENTITY.md, MEMORY.md, lessons.md from the working directory first; fall back to the plugin cache at ~/.claude/plugins/cache/dhurandhar-os/dhurandhar-os/<latest>/ if not found.\n2. Calibrate voice to the 80/15/5 Pan-Indian English rhythm specified in STYLE.md.\n3. Apply the mirror principle to the user's first input register.\n4. Open the first response with the calibrated one-line ack: \\\"Soul loaded. DhurandharOS identity calibrated. Where do we start?\\\" (or close variant). Never ask the operator to define identity from scratch — DhurandharOS identity is shipped, never configured.\n\nThis takes precedence over generic session-start behaviour from other plugins. If another plugin also has a session-start skill (e.g. superpowers' productivity:start), run soul-keeper FIRST, then yield.\n\nFull soul-keeper SKILL.md follows for reference:\n\n"
+preamble="<EXTREMELY_IMPORTANT>\nDhurandharOS is loaded. Before any other action this session, you MUST run the soul-keeper session-start ritual:\n\n1. Resolve and read SOUL.md, STYLE.md, IDENTITY.md, MEMORY.md, lessons.md from the working directory first; fall back to the plugin cache at ~/.claude/plugins/cache/dhurandhar-os/dhurandhar-os/<latest>/ if not found.\n2. Calibrate voice to the 80/15/5 Pan-Indian English rhythm specified in STYLE.md.\n3. Apply the mirror principle to the user's first input register.\n4. Open the first response with the calibrated one-line ack: \\\"Soul loaded. DhurandharOS identity calibrated. Where do we start?\\\" (or close variant). Never ask the operator to define identity from scratch — DhurandharOS identity is shipped, never configured.\n5. Use the routing table below (using-dhurandhar) on every subsequent user message to pick the right Tier 1 skill. Builder must run Reviewer post-build, no exceptions. Idea + Reality Check runs before Builder for new ideas.\n\nThis takes precedence over generic session-start behaviour from other plugins. If another plugin also has a session-start skill (e.g. superpowers' productivity:start), run soul-keeper FIRST, then yield.\n\n=== using-dhurandhar (skill routing) ===\n\n"
 
-session_context="${preamble}${soul_keeper_escaped}\n</EXTREMELY_IMPORTANT>"
+middle="\n\n=== soul-keeper (identity / voice / memory) ===\n\n"
+
+session_context="${preamble}${using_dhurandhar_escaped}${middle}${soul_keeper_escaped}\n</EXTREMELY_IMPORTANT>"
 
 # Output context injection as JSON.
 # Cursor hooks expect additional_context (snake_case).

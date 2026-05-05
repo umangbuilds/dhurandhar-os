@@ -1,7 +1,7 @@
 {
   "name": "dhurandhar-os",
-  "version": "0.1.7",
-  "description": "The operating system for one-person armies who refuse to think small. Seven Tier 1 skills for non-technical Indian operators shipping serious products alone — including Deployment Advisor (Vercel/Supabase/AWS Mumbai).",
+  "version": "0.1.8",
+  "description": "The operating system for one-person armies who refuse to think small. Six Tier 1 skills for non-technical Indian operators shipping serious products alone — including Deployment Advisor (Vercel/Supabase/AWS Mumbai).",
   "author": {
     "name": "DhurandharOS contributors",
     "url": "https://github.com/umangbuilds/dhurandhar-os"
@@ -17,7 +17,6 @@
     "bengaluru",
     "operator",
     "tdd",
-    "hiring",
     "prd",
     "code-review"
   ]

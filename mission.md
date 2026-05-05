@@ -24,8 +24,8 @@ The senior team becomes a file the operator loads. The workflow becomes the moat
 
 DhurandharOS is a 90-day demonstration project. The arc is honest:
 
-- **v0.1 (Day 1).** Six Tier 1 skills + one stub. Universal solo-operator workflow with one India-context wedge: Hiring JD Writer. Soul Keeper anchors voice and memory. Builder runs TDD-first. Reviewer runs adversarial. PRD Writer is money-aware. Idea Reality Check refuses to ship code without three customers. Hiring JD Writer cites comp bands from public listings, never from competitors.
-- **v0.2 (Day 60–90).** Launch + Marketer expanded from stub. India fintech additions land in core: DPDPA Compliance, RBI Digital Lending, UPI Payments. The fintech operator's brain comes online.
+- **v0.1 (Day 1).** Six Tier 1 skills + one stub. Universal solo-operator workflow. Soul Keeper anchors voice and memory (with SessionStart hook precedence). Builder runs TDD-first with mandatory post-build review. Reviewer runs adversarial. PRD Writer is money-aware. Idea Reality Check refuses to ship code without three customers. Deployment Advisor names the migration triggers from Supabase pre-revenue to AWS Mumbai for regulated production.
+- **v0.2 (Day 60–90).** Launch + Marketer expanded from stub. Hiring JD Writer ships (deferred from v0.1) — comp bands from public listings, never from competitors. India fintech additions land in core: DPDPA Compliance, RBI Digital Lending, UPI Payments. The fintech operator's brain comes online.
 - **v0.3 (Day 90–180).** Broader Indian compliance — incorporation, GST/TDS, POSH, ESOP, FEMA, ToS/Privacy. Hindi/regional content variants. Tier 2/3 GTM playbooks.
 
 Each version is shippable on its own. The operator using v0.1 today should have shipped a real product by the time v0.2 lands.
@@ -51,7 +51,7 @@ Shipping is not pushing code to a branch. Shipping is:
 - A spec that names where the money sits, who reconciles when the webhook fails, and what consent looks like.
 - A test suite that fails honestly before it passes.
 - A review pass that finds five real things, not thirty noisy ones.
-- A hiring decision that does not blow up in a tax notice 14 months later.
+- A deployment that survives the first regulated partner's due-diligence pass.
 
 Anything less is theatre.
 

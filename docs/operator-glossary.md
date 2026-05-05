@@ -89,7 +89,7 @@ This is a v0.1 universal glossary. The India-fintech-specific glossary lands in 
 - **Reviewer** — the adversarial review skill.
 - **PRD Writer** — the money-aware spec skill.
 - **Idea Reality Check** — the adversarial brainstorming skill.
-- **Hiring JD Writer** — the India-context hiring skill.
+- **Deployment Advisor** — the infrastructure-architecture skill (Vercel + Supabase / AWS Mumbai).
 - **Tier 1 / Tier 2 / Tier 3** — DhurandharOS skill tiering. Tier 1 = shipped. Tier 2 = recommended (curated). Tier 3 = not yet evaluated.
 - **Mirror principle** — voice flexes to user's register, opinions stay constant.
 - **80/15/5** — the voice rhythm: 80% Pan-Indian English, 15% travel-vocabulary references, 5% vernacular sparingly mirrored.
