@@ -1,6 +1,6 @@
 # Pressure tests — soul-keeper
 
-Five pressure tests that the soul-keeper skill must pass. Run each against base Claude *without* the skill installed first to confirm baseline fails. Then install soul-keeper and re-run to confirm 5/5 pass.
+Eight pressure tests that the soul-keeper skill must pass. Run each against base Claude *without* the skill installed first to confirm baseline fails. Then install soul-keeper and re-run to confirm 8/8 pass.
 
 ---
 
@@ -80,8 +80,60 @@ Five pressure tests that the soul-keeper skill must pass. Run each against base 
 
 ---
 
+## Test 6 — Cache fallback when working directory has no identity files
+
+**Setup:** Fresh working directory with NO SOUL.md, STYLE.md, IDENTITY.md, MEMORY.md, or lessons.md present. The plugin cache at `~/.claude/plugins/cache/dhurandhar-os/dhurandhar-os/<version>/` is intact.
+
+**User input:** "Hi" (or any first turn).
+
+**Pass criteria:**
+- Skill silently resolves identity files from the plugin cache.
+- Response references "DhurandharOS" by name.
+- Response opens with the calibrated one-line ack ("Soul loaded. DhurandharOS identity calibrated. Where do we start?" or close variant).
+- Response does NOT ask "what's your name?", "what do you do?", "tell me about yourself," or any identity-construction question.
+- Response does NOT offer to build identity, create SOUL.md, or set up identity files.
+
+**Baseline behaviour (without skill):** Generic Claude greeting, asks user what they want to do.
+
+**Failure mode this catches:** v0.1.5 and earlier — skill failed to find identity files in working dir, then asked the user to define DhurandharOS from scratch. The fix: cache fallback.
+
+---
+
+## Test 7 — Partial working-directory override (project customization)
+
+**Setup:** Working directory contains ONLY a custom SOUL.md (project-specific worldview override). No STYLE.md, IDENTITY.md, MEMORY.md, lessons.md in working directory. Plugin cache intact.
+
+**User input:** "What do you know about me?"
+
+**Pass criteria:**
+- Skill loads SOUL.md from working directory (override wins).
+- Skill loads STYLE.md, IDENTITY.md, MEMORY.md, lessons.md from plugin cache.
+- Response reflects working-directory SOUL content (project-specific worldview).
+- Voice still obeys 80/15/5 from cache STYLE.md.
+- No identity-construction question is asked.
+
+**Baseline behaviour:** No fallback awareness; either fails entirely or behaves inconsistently.
+
+---
+
+## Test 8 — Plugin cache missing (reinstall edge case)
+
+**Setup:** Working directory has no identity files. Plugin cache at `~/.claude/plugins/cache/dhurandhar-os/` does not exist (uninstalled, corrupted, or fresh machine pre-install).
+
+**User input:** "Hi."
+
+**Pass criteria:**
+- Response surfaces a clear reinstall instruction:
+  > "DhurandharOS plugin cache not found at the expected path. Reinstall via `claude plugin install dhurandhar-os@dhurandhar-os` and re-open the session."
+- Response does NOT pivot to "let me build your identity from scratch."
+- Response does NOT ask the operator to define their name, role, or worldview.
+
+**Baseline behaviour:** Generic Claude greeting; no awareness of the install state.
+
+---
+
 ## Test results — v0.1 release
 
-Baseline (before skill): 0 / 5 pass.
-With skill installed: 5 / 5 pass.
-Documented in `docs/test-results-v0.1.0.md` at release.
+Baseline (before skill): 0 / 8 pass.
+With skill installed: 8 / 8 pass.
+Documented in `docs/test-results-v0.1.0.md` (Tests 1–5) and `docs/test-results-v0.1.6.md` (Tests 6–8) at release.

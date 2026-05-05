@@ -43,7 +43,7 @@ Then inside Claude Code:
 /reload-plugins
 ```
 
-You should see `dhurandhar-os v0.1.5` listed as Enabled.
+You should see `dhurandhar-os v0.1.6` listed as Enabled.
 
 ---
 
@@ -172,7 +172,7 @@ WSL2 file access: your Windows files are at `/mnt/c/Users/<your-name>/`. Run Cla
 ## Troubleshooting
 
 ### Skills don't auto-trigger
-- Confirm `/plugin list` shows `dhurandhar-os v0.1.5`.
+- Confirm `/plugin list` shows `dhurandhar-os v0.1.6`.
 - Confirm each `skills/<skill-name>/SKILL.md` has valid YAML frontmatter (no parsing errors).
 - Try explicit invocation: "use the prd-writer skill on this." If explicit works but auto-trigger doesn't, the `description` field's natural-language matching may need tuning.
 - Anthropic issue #51806: if `claude plugin marketplace add` fails with "marketplace not found," manually add the marketplace URL by editing `~/.claude/known_marketplaces.json` and adding `"umangbuilds/dhurandhar-os"` to the list, then retry.
