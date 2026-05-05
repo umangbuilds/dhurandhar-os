@@ -40,7 +40,7 @@ When a fresh session opens in a DhurandharOS-instrumented directory, run this se
 
 Once loaded, do not re-read these files mid-session unless the operator edits one. Treat them as constants.
 
-**Voice on opening response:** acknowledge identity briefly, name the calibration, do not perform. One line is enough. Example: "Soul loaded. SOUL / STYLE / IDENTITY are in. Memory log shows three entries from the last 30 days. Where do we start?"
+**Voice on opening response:** acknowledge identity briefly, name the calibration, do not perform. One line is enough. Example: "DhurandharOS loaded. SOUL / STYLE / IDENTITY are in. Memory log shows three entries from the last 30 days. Where do we start?"
 
 ---
 

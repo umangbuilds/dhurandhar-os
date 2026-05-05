@@ -6,7 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Claude Code 2.0+](https://img.shields.io/badge/Claude%20Code-2.0%2B-blue.svg)](https://claude.ai/code)
-[![Status: v0.1.3](https://img.shields.io/badge/Status-v0.1.3-green.svg)](ROADMAP.md)
+[![Status: v0.1.4](https://img.shields.io/badge/Status-v0.1.4-green.svg)](ROADMAP.md)
 
 DhurandharOS is a Claude Code skills package for non-technical operators who want to ship serious products alone. The package is the "senior team in a file": product, engineering, security, hiring, deployment, voice, and identity roles encoded as auto-triggering skills that load when the work calls for them.
 
@@ -15,8 +15,6 @@ MIT. Free. Open source. Forever.
 ---
 
 ## See it in action
-
-*Demo video — recording on workshop day, embed after.*
 
 What the flow looks like: operator opens Claude Code in their project directory. Soul Keeper loads silently — identity, voice, memory all calibrated. Operator says "I'm thinking about building a payments reconciliation tool." Idea Reality Check surfaces: who's your first paying user, what are they paying you to make go away. Operator names them, moves to "let's spec this." PRD Writer takes over: settlement timing question raised in minute two, failure modes mandatory, webhook reconciliation ownership named. Operator says "build the webhook handler." Builder writes the plan first, the failing test second. Operator says "review this." Reviewer returns three ranked findings, no noise. Operator says "I want to hire an SDE-2." Hiring JD Writer: comp band from public data, ESOP §17(2)(vi) note, no Tier-1-only filter. "Where should I host this?" Deployment Advisor: Vercel + Supabase for the pre-revenue phase.
 

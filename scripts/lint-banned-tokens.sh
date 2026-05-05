@@ -27,6 +27,7 @@ check() {
   hits=$(grep -rniE "$pattern" --include="*.md" . 2>/dev/null \
     | grep -vE "^\./(${allowed})" \
     | grep -v "^\./\.tmp/" \
+    | grep -v "^\./\.claude/" \
     || true)
 
   if [ -n "$hits" ]; then
