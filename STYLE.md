@@ -51,7 +51,7 @@ These break the voice. Lint enforces them before every commit.
 - **Sycophancy.** "Great question," "Excellent point," "I love this idea," "Brilliant!" — all banned. The user's idea is good or it is not. Say which.
 - **US-default frames.** Assuming Bay Area, assuming Y Combinator, assuming Series A, assuming Stripe-as-payment-rail, assuming W2 employment law, assuming 401(k). Every default must translate to the Indian builder's reality or it does not ship.
 - **Sanskrit-as-theatre.** No "yathaa raja, tathaa praja" for vibes. The name is enough Sanskrit.
-- **Competitor PSP/aggregator names in marketing copy.** Razorpay, Cashfree, PhonePe, PayU, Paytm (in PSP context), Stripe India — banned in marketing and mission copy (README except FAQ, INSTALL except troubleshooting, RECOMMENDED, ROADMAP, CONTRIBUTING, mission.md). Use generic terms: payment gateway, PSP, payment aggregator, payments orchestrator. **Exception — operational contexts:** when the user explicitly asks "which payment gateway?" or names a PSP they're using, operational skills (Deployment Advisor, Reviewer, PRD Writer) may name PSPs honestly. Marketing copy still bans all PSP names regardless.
+- **PSP-neutral marketing copy.** Marketing and mission copy stays neutral on payment gateways — generic terms only ("payment gateway," "PSP," "payment aggregator," "payments orchestrator") in README (except FAQ), INSTALL (except troubleshooting), RECOMMENDED, ROADMAP, CONTRIBUTING, and mission.md. **Exception — operational contexts:** when the user explicitly asks "which payment gateway?" or names one they're using, operational skills (Deployment Advisor, Reviewer, PRD Writer) name PSPs honestly. The lint script enforces the scrub on marketing copy.
 - **Founder's parallel venture.** MoltPe banned in shipped copy. Founder identity stays "13-year fintech operator in Bengaluru."
 - **Film references.** Ranveer Singh banned. "Dhurandhar" banned when referring to the film (not the package). No character snippets, no dialogue echoes.
 - **US slang.** "dude," "y'all," "guys" — banned. Use "operator," "founder," "you," "the team."
@@ -86,30 +86,14 @@ These break the voice. Lint enforces them before every commit.
 
 ## Lint rules — banned tokens (enforced before every commit)
 
-The following regex patterns must return zero hits in user-facing files — except inside the explicitly allowed contexts listed per rule. The context-aware lint script is at `scripts/lint-banned-tokens.sh`.
+The context-aware lint script at `scripts/lint-banned-tokens.sh` is the source of truth for banned-token enforcement. Categories covered:
 
-PSP names are allowed in: `STYLE.md`, `docs/voice-guide.md`, `DECISIONS.md`, `CONTRIBUTING.md`, `tests/`, `skills/deployment-advisor/SKILL.md`, `skills/reviewer/SKILL.md` (review of integration code), `skills/prd-writer/SKILL.md` (payment provider field), and the README FAQ section only.
+- **PSP brand names** — scrubbed from marketing and mission copy. Allowed in `DECISIONS.md`, `tests/`, `skills/deployment-advisor/SKILL.md`, `skills/reviewer/SKILL.md` (integration code review), `skills/prd-writer/SKILL.md` (payment provider field), and the README FAQ section.
+- **Founder's parallel venture name** — banned in all shipped copy.
+- **Film references** — banned in all shipped copy.
+- **Voice anti-patterns** — emoji of any Unicode range; "namaste" as opener; "bhai" outside mirrored-vernacular examples; US slang ("dude," "y'all," "guys").
 
-```
-# Competitor brands
-grep -rni -E "razorpay|cashfree|phonepe|payu\b|paytm" --include="*.md" .
-grep -rni -E "razor pay|cash free|phone pe|pay-u|stripe india" --include="*.md" .
-
-# Founder's parallel venture
-grep -rn "MoltPe" --include="*.md" .
-
-# Film references
-grep -rni "ranveer singh" --include="*.md" .
-grep -rniE "dhurandhar.{1,30}(film|movie|bollywood)" --include="*.md" .
-
-# Voice anti-patterns
-grep -rni "bhai" --include="*.md" .                     # manual: only allowed in STYLE.md / voice-guide.md examples
-grep -rnP "[\x{1F300}-\x{1FAFF}\x{2600}-\x{27BF}]" --include="*.md" .  # emoji
-grep -rni "namaste" --include="*.md" .                  # manual: only in historical context
-grep -rniE "\bdude\b|y'all|\bguys\b" --include="*.md" . # US-default
-```
-
-Any hit outside an explicitly-allowed file blocks release.
+Run `bash scripts/lint-banned-tokens.sh` before every commit. Any hit outside an explicitly-allowed file blocks release.
 
 ---
 

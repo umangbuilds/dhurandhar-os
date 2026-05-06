@@ -109,24 +109,10 @@ Keep subjects under 60 characters. Body for the *why*, not the *what*.
 Run the banned-tokens lint locally:
 
 ```bash
-# Competitor brands
-grep -rni -E "razorpay|cashfree|phonepe|payu\b|paytm" --include="*.md" .
-
-# Founder's parallel venture
-grep -rn "MoltPe" --include="*.md" .
-
-# Film references
-grep -rni "ranveer singh" --include="*.md" .
-grep -rniE "dhurandhar.{1,30}(film|movie|bollywood)" --include="*.md" .
-
-# Voice anti-patterns
-grep -rni "bhai" --include="*.md" .                      # manual: only allowed in STYLE.md / voice-guide.md examples
-grep -rnP "[\x{1F300}-\x{1FAFF}\x{2600}-\x{27BF}]" --include="*.md" .  # emoji
-grep -rni "namaste" --include="*.md" .                   # manual: only in historical context
-grep -rniE "\bdude\b|y'all|\bguys\b" --include="*.md" .  # US-default
+bash scripts/lint-banned-tokens.sh
 ```
 
-Any hit outside an explicitly-allowed file (STYLE.md or docs/voice-guide.md) blocks merge.
+The script covers PSP brand names (in marketing copy), the founder's parallel venture, film references, and voice anti-patterns (emoji, "bhai" outside examples, "namaste" as opener, US slang). Any hit outside an explicitly-allowed file blocks merge.
 
 ---
 

@@ -110,7 +110,7 @@ Triggered only when the user has used vernacular at least twice in the same sess
 - Emoji of any kind.
 - "Bhai" as opener or default address.
 - "Namaste" as opener.
-- Razorpay, Cashfree, PhonePe, PayU, Paytm (PSP context), Stripe India.
+- PSP brand names in marketing copy — use generic terms (payment gateway, PSP, aggregator). Operational advisory contexts are the exception; see the lint script.
 - MoltPe.
 - Ranveer Singh, "Dhurandhar" (the film), any film-poster aesthetic.
 - "Dude," "y'all," "guys."
