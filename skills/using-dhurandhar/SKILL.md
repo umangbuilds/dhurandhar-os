@@ -16,9 +16,10 @@ The orchestration layer for the seven DhurandharOS Tier 1 skills. Use this routi
 | Skill | Triggers on |
 |---|---|
 | **Soul Keeper** | Always active. Identity and voice layer. Auto-loaded via SessionStart hook. |
-| **Idea + Reality Check** | "I want to build...", "should I...", "thinking about...", "what if...", "I'm considering...", "pivoting...", new ideas, risky decisions, overcomplicated plans. Refuses to ship code without three named first paying users. |
-| **PRD Writer** | "spec this", "write requirements", "PRD", "let's design the feature", "scope this", "lock the spec". |
-| **Builder** | "build this", "implement", "ship it", "code this", "write the function", "create the endpoint", any concrete build/create request after the spec is locked. |
+| **Workflow Orchestrator** | Raw build intent BEFORE a spec exists — "I want to build X", "let's build X", "help me make X", "create a tool that X", "I have an idea for X", "can we build X", "I want to make X", "build me X". Walks the operator through reality-check → PRD → build → review → launch with explicit checkpoints. Does NOT fire if a PRD already exists or on meta-prompts about DhurandharOS itself. |
+| **Idea + Reality Check** | "should I...", "thinking about...", "what if...", "I'm considering...", "pivoting...", "not sure if...", risky decisions, overcomplicated plans. Also invoked by Workflow Orchestrator as step 1. Refuses to ship code without first paying users named. |
+| **PRD Writer** | "spec this", "write requirements", "PRD", "let's design the feature", "scope this", "lock the spec". Also invoked by Workflow Orchestrator as step 2. |
+| **Builder** | Spec-to-code only — "implement the spec", "build per the PRD", "code this up based on the spec", "let's code", "ship the spec", "write the function" / "create the endpoint" when a spec is in scope. Does NOT fire on raw build intent (those go to Workflow Orchestrator first). Also invoked by Workflow Orchestrator as step 3. |
 | **UI Designer** | "design", "UI", "UX", "landing page", "homepage", "website", "app screen", "dashboard", "make this look good", "fix the design", "this looks ugly", "redesign", any visual build request — AND auto-invoked by Builder for any task that produces HTML/CSS/JSX output. Builder handles logic; UI Designer handles aesthetics. UI Designer's visual decisions override Builder's defaults. |
 | **Reviewer** | "review this", "check this code", "is this safe?", git diff, PR creation — AND automatically after Builder completes ANY build task. |
 | **Deployment Advisor** | "deploy", "hosting", "where should I host", "what infra", "cloud setup", "going live", "production setup", "Vercel", "Supabase", "AWS", "scaling". |
@@ -32,13 +33,17 @@ The orchestration layer for the seven DhurandharOS Tier 1 skills. Use this routi
 
 2. **When Builder produces visual output, UI Designer's rules apply automatically.** Builder handles logic. UI Designer handles aesthetics. Load UI Designer before writing any HTML/CSS/JSX. UI Designer's visual decisions override Builder's defaults.
 
-3. **Idea + Reality Check runs before Builder** when the operator phrases a request as a new idea ("I want to build X", "should I build Y"). Do not jump to code until Idea + Reality Check has surfaced the customer question and the operator has named at least one first paying user.
+3. **Workflow Orchestrator owns raw build intent.** When the operator says "I want to build X" / "let's build Y" / "create a tool that Z" with no prior spec, Workflow Orchestrator fires first and runs the chain (reality-check → PRD → build → review → launch) with an explicit checkpoint between every step. Builder does not intercept raw build intent.
 
-4. **PRD Writer runs before Builder** when the build is non-trivial (more than a single function or script). The locked spec is the input Builder works from. For trivial scripts ("rename this variable across the file"), skip the PRD step.
+4. **Builder owns spec-to-code.** Once a PRD or locked spec exists (file in working directory, or produced earlier in session), "let's code" / "implement the spec" / "build per the PRD" routes directly to Builder.
 
-5. **If no skill matches:** respond normally but maintain Soul Keeper's voice (80/15/5, no banned tokens, mirror principle).
+5. **Idea + Reality Check runs before Builder** for any new idea — either via Workflow Orchestrator (step 1) or directly when the operator says "should I build Y" / "thinking about Q." Do not jump to code until Idea + Reality Check has surfaced the customer question and the operator has named at least one first paying user.
 
-6. **Skills can chain.** Idea Reality Check → PRD Writer → Builder (+ UI Designer for visual output) → Reviewer is the canonical end-to-end flow. Do not skip steps without an explicit operator override.
+6. **PRD Writer runs before Builder** when the build is non-trivial (more than a single function or script). The locked spec is the input Builder works from. For trivial scripts ("rename this variable across the file"), skip the PRD step.
+
+7. **If no skill matches:** respond normally but maintain Soul Keeper's voice (80/15/5, no banned tokens, mirror principle).
+
+8. **Skills can chain.** Workflow Orchestrator → Idea Reality Check → PRD Writer → Builder (+ UI Designer for visual output) → Reviewer → Launch Marketer is the canonical end-to-end flow. Do not skip steps without an explicit operator override.
 
 ---
 
