@@ -2,18 +2,24 @@
 
 DhurandharOS is a Claude Code skills package. Install it once, the skills auto-trigger on the operator's natural language, and the senior team is in the room.
 
-> **Claude Code only.** DhurandharOS works in Claude Code (the CLI tool), not the Claude Desktop chat app. If you're not sure which one you have, see: `claude --version` in your terminal — if that works, you have Claude Code.
+> **Built for non-technical operators first.** The fastest path is the **Claude desktop app's Code tab** — Claude Code runs natively inside it, no terminal login required. Power users can still use the Claude Code CLI from their terminal. Both paths are below.
 
 ---
 
+## Two install paths
+
+**Path 1 — Claude desktop app, Code tab (no terminal):** recommended for non-technical operators. Install the Claude desktop app, open the Code tab, run the `/plugin` commands inside it. That's it.
+
+**Path 2 — Claude Code CLI (terminal):** for operators comfortable on the command line. Run `$ claude` in your terminal, then run `/plugin` commands inside the session.
+
 ## How to read this guide
 
-- **Lines starting with `$`** are terminal commands — run them in your operating system's terminal (Terminal.app on macOS, Ubuntu shell on WSL, PowerShell on native Windows).
-- **Lines starting with `/`** are Claude Code interactive commands — type them inside an active Claude Code session, after you run `$ claude` to start.
+- **Lines starting with `$`** are terminal commands — run them in your operating system's terminal (Terminal.app on macOS, Ubuntu shell on WSL, PowerShell on native Windows). **Skip these if you are using the Claude desktop app's Code tab.**
+- **Lines starting with `/`** are Claude Code interactive commands — type them inside an active Claude Code session. In the desktop app this means inside the **Code tab**. In the CLI this means after you run `$ claude` to start.
 
 Example:
-- `$ claude plugin marketplace add umangbuilds/dhurandhar-os` — runs in your terminal
-- `/plugin list` — type this inside Claude Code after running `$ claude`
+- `$ claude plugin marketplace add umangbuilds/dhurandhar-os` — runs in your terminal (CLI path only)
+- `/plugin list` — type this inside Claude Code (works in either the desktop app's Code tab, or after `$ claude` in the terminal)
 
 ---
 
@@ -29,7 +35,28 @@ Optional but recommended:
 
 ---
 
-## Quick install (recommended)
+## Quick install — desktop app, Code tab (no terminal)
+
+This is the easy path for non-technical operators.
+
+1. Install the **Claude desktop app** from [claude.ai/download](https://claude.ai/download) (Mac or Windows).
+2. Open the app, sign in, and click the **Code** tab in the sidebar. Claude Code runs natively inside it — same skills engine, no terminal needed.
+3. Inside the Code tab, run these commands one by one:
+   ```
+   /plugin marketplace add umangbuilds/dhurandhar-os
+   /plugin install dhurandhar-os@dhurandhar-os
+   /plugin list
+   /reload-plugins
+   ```
+4. You should see `dhurandhar-os v0.1.8` listed as Enabled.
+
+Done. Skip to **First session — what to expect** below.
+
+---
+
+## Quick install — Claude Code CLI (terminal)
+
+For operators on the command line:
 
 ```
 $ claude plugin marketplace add umangbuilds/dhurandhar-os

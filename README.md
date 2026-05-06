@@ -2,13 +2,13 @@
 
 **The operating system for one-person armies who refuse to think small.**
 
-> For Claude Code, not the Claude Desktop chat app. See [INSTALL.md](INSTALL.md) if you're not sure which one you have (`$ claude --version` in your terminal — if that works, you have Claude Code).
+> **Designed for non-technical operators.** Easiest way to use it: open the **Claude desktop app** and switch to the **Code tab** — Claude Code runs right inside it. No terminal, no `$ claude` login, no command-line setup. Power users can still use the Claude Code CLI in their terminal. See [INSTALL.md](INSTALL.md) for both paths.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Claude Code 2.0+](https://img.shields.io/badge/Claude%20Code-2.0%2B-blue.svg)](https://claude.ai/code)
-[![Status: v0.1.8](https://img.shields.io/badge/Status-v0.1.8-green.svg)](ROADMAP.md)
+[![Status: v0.1.10](https://img.shields.io/badge/Status-v0.1.10-green.svg)](ROADMAP.md)
 
-DhurandharOS is a Claude Code skills package for non-technical operators who want to ship serious products alone. The package is the "senior team in a file": product, engineering, security, deployment, voice, and identity roles encoded as auto-triggering skills that load when the work calls for them.
+DhurandharOS is a Claude Code skills package for non-technical operators who want to ship serious products alone. The package is the "senior team in a file": product, engineering, security, deployment, design, workflow, voice, and identity roles encoded as auto-triggering skills that load when the work calls for them.
 
 MIT. Free. Open source. Forever.
 
@@ -41,7 +41,7 @@ It is not for someone who wants a black-box agent that builds while they sleep. 
 
 ---
 
-## The 6 skills
+## The 8 skills
 
 ### Soul Keeper
 Loads SOUL.md, STYLE.md, and IDENTITY.md at session start. Captures running memory to MEMORY.md and learnings to lessons.md. Enforces voice — Pan-Indian English with the 80/15/5 rhythm — across every response. Mirror principle: voice flexes to your register, opinions stay constant.
@@ -73,6 +73,16 @@ Path A: Vercel + Supabase for non-regulated SaaS. Path B: Supabase pre-revenue, 
 
 **Auto-triggers on:** "deploy," "hosting," "where should I host," "what infra," "cloud setup," "going live," "production setup."
 
+### UI Designer (v0.1.9)
+Design and visual quality layer. Builder ships code that works; UI Designer makes sure it doesn't look like a committee of interns generated it at 2am. Auto-invoked by Builder before any HTML / CSS / JSX output. Every visual that ships from DhurandharOS should be screenshot-worthy.
+
+**Auto-triggers on:** "design," "UI," "UX," "make this look good," "fix the design," "this looks ugly," "redesign," "homepage," "landing page," "dashboard," "app screen," "component."
+
+### Workflow Orchestrator (v0.1.10)
+The chain runner. Activates on raw build intent *before* a spec exists ("I want to build X," "let's build X," "help me make X") and walks the operator through the canonical DhurandharOS chain: Idea Reality Check → PRD Writer → Builder → Reviewer → Launch + Marketer. Pauses for explicit confirmation at every step. Skip, revise, or abandon at any checkpoint.
+
+**Auto-triggers on:** "I want to build," "let's build," "help me make," "create a tool that," "I have an idea for," "can we build," "build me." Does not fire once a PRD is locked — Builder owns spec-to-code from there.
+
 ### Plus one stub
 **Launch + Marketer** lands in v0.2. The stub points to a curated Tier 2 add-on (`coreyhaines31/marketingskills`) for now.
 
@@ -82,7 +92,7 @@ Path A: Vercel + Supabase for non-regulated SaaS. Path B: Supabase pre-revenue, 
 
 DhurandharOS is a 90-day demonstration project. The arc is honest:
 
-- **v0.1 (shipped):** universal solo-operator workflow. Six Tier 1 skills + Launch + Marketer stub. Deployment Advisor added in v0.1.2. SessionStart hook + skill-routing layer added in v0.1.7 / v0.1.8.
+- **v0.1 (shipped):** universal solo-operator workflow. Eight Tier 1 skills + Launch + Marketer stub. Deployment Advisor added in v0.1.2. SessionStart hook + skill-routing layer added in v0.1.7 / v0.1.8. UI Designer added in v0.1.9. Workflow Orchestrator added in v0.1.10 (Builder tightened to spec-to-code only).
 - **v0.2 (Day 60–90):** Launch + Marketer expanded. Hiring JD Writer ships (deferred from v0.1). DPDPA Compliance, RBI Digital Lending, UPI Payments land as core skills. The fintech operator's brain comes online.
 - **v0.3 (Day 90–180):** broader Indian compliance (incorporation, GST/TDS, POSH, ESOP, FEMA, ToS/Privacy). Hindi/regional voice variants. Tier 2/3 GTM playbooks.
 
@@ -94,7 +104,24 @@ See [ROADMAP.md](ROADMAP.md) for the full version arc.
 
 ## Install
 
-See [INSTALL.md](INSTALL.md) for the full install guide including Windows and troubleshooting. Short version:
+DhurandharOS is built for non-technical operators first. Pick whichever path matches you.
+
+### Easy path — Claude desktop app (recommended for non-technical operators)
+
+No terminal. No login commands. No CLI setup.
+
+1. Install the **Claude desktop app** (Mac or Windows) from [claude.ai/download](https://claude.ai/download).
+2. Open the app and switch to the **Code tab** in the sidebar — Claude Code runs natively inside it.
+3. Inside the Code tab, run:
+   ```
+   /plugin marketplace add umangbuilds/dhurandhar-os
+   /plugin install dhurandhar-os@dhurandhar-os
+   /reload-plugins
+   ```
+
+That is the whole setup. The skills auto-trigger on natural language — you do not need to remember slash commands after this.
+
+### Power-user path — Claude Code CLI (terminal)
 
 ```
 $ claude plugin marketplace add umangbuilds/dhurandhar-os
@@ -107,7 +134,7 @@ Then inside Claude Code:
 /reload-plugins
 ```
 
-The skills auto-trigger on natural language. You do not need to remember slash commands.
+See [INSTALL.md](INSTALL.md) for the full guide including Windows, WSL2, and troubleshooting.
 
 ---
 
@@ -133,7 +160,7 @@ The skills auto-trigger on natural language. You do not need to remember slash c
 Dhurandhar (धुरंधर) — Hindi / Sanskrit. One who carries the burden on their shoulders. The load-bearer. It's the right word for a founder doing the work of a team. The package name came before the film; the two are unrelated.
 
 **2. Is this for me if I'm not in fintech?**
-Yes. Soul Keeper, Builder, Reviewer, PRD Writer, and Idea Reality Check are universal solo-operator skills. Deployment Advisor covers any SaaS. Only the Tier 2 add-ons (DPDPA, RBI) are fintech-specific. Hiring JD Writer is deferred to v0.2.
+Yes. Soul Keeper, Builder, Reviewer, PRD Writer, Idea Reality Check, UI Designer, and Workflow Orchestrator are universal solo-operator skills. Deployment Advisor covers any SaaS. Only the Tier 2 add-ons (DPDPA, RBI) are fintech-specific. Hiring JD Writer is deferred to v0.2.
 
 **3. Why don't skills recommend a specific payment gateway by default?**
 The Deployment Advisor and PRD Writer surface PSP guidance when you ask. Default specs write "Payment Aggregator (TBD)" because PSP selection is a business decision that belongs to the operator, not to the skill. When you ask, you get an honest landscape with settlement timing differences and the RBI PA registry pointer.
