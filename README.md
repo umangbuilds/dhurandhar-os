@@ -6,7 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Claude Code 2.0+](https://img.shields.io/badge/Claude%20Code-2.0%2B-blue.svg)](https://claude.ai/code)
-[![Status: v0.1.10](https://img.shields.io/badge/Status-v0.1.10-green.svg)](ROADMAP.md)
+[![Status: v0.1.11](https://img.shields.io/badge/Status-v0.1.11-green.svg)](ROADMAP.md)
 
 DhurandharOS is a Claude Code skills package for non-technical operators who want to ship serious products alone. The package is the "senior team in a file": product, engineering, security, deployment, design, workflow, voice, and identity roles encoded as auto-triggering skills that load when the work calls for them.
 
@@ -106,20 +106,19 @@ See [ROADMAP.md](ROADMAP.md) for the full version arc.
 
 DhurandharOS is built for non-technical operators first. Pick whichever path matches you.
 
-### Easy path — Claude desktop app (recommended for non-technical operators)
+### Easy path — Claude desktop app, Code tab (no terminal, no CLI)
 
-No terminal. No login commands. No CLI setup.
+1. Install the **Claude desktop app** from claude.ai/download (Mac or Windows).
+2. Open the app and click the **Code** tab in the sidebar.
+3. In a fresh Code tab chat, type this single sentence:
 
-1. Install the **Claude desktop app** (Mac or Windows) from [claude.ai/download](https://claude.ai/download).
-2. Open the app and switch to the **Code tab** in the sidebar — Claude Code runs natively inside it.
-3. Inside the Code tab, run:
-   ```
-   /plugin marketplace add umangbuilds/dhurandhar-os
-   /plugin install dhurandhar-os@dhurandhar-os
-   /reload-plugins
-   ```
+   install DhurandharOS from github.com/umangbuilds/dhurandhar-os
 
-That is the whole setup. The skills auto-trigger on natural language — you do not need to remember slash commands after this.
+4. Click **Allow once** on each permission prompt that appears (typically 5-8 prompts). Claude Code will add the marketplace, install the plugin, and verify it's enabled.
+5. Restart Claude Code (Cmd+Q on Mac and reopen, or close-and-reopen on Windows).
+6. Open a fresh Code tab session and type `use dhurandhar` to confirm voice loads.
+
+That's the whole setup. No /plugin slash commands. No terminal. No CLI.
 
 ### Power-user path — Claude Code CLI (terminal)
 

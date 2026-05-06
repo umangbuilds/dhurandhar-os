@@ -8,18 +8,18 @@ DhurandharOS is a Claude Code skills package. Install it once, the skills auto-t
 
 ## Two install paths
 
-**Path 1 — Claude desktop app, Code tab (no terminal):** recommended for non-technical operators. Install the Claude desktop app, open the Code tab, run the `/plugin` commands inside it. That's it.
+**Path 1 — Claude desktop app, Code tab (no terminal):** recommended for non-technical operators. Install the Claude desktop app, open the Code tab, type one English sentence asking Claude Code to install DhurandharOS. Claude Code runs the right commands for you with permission prompts. No `/plugin` slash commands needed — those are CLI-only.
 
 **Path 2 — Claude Code CLI (terminal):** for operators comfortable on the command line. Run `$ claude` in your terminal, then run `/plugin` commands inside the session.
 
 ## How to read this guide
 
 - **Lines starting with `$`** are terminal commands — run them in your operating system's terminal (Terminal.app on macOS, Ubuntu shell on WSL, PowerShell on native Windows). **Skip these if you are using the Claude desktop app's Code tab.**
-- **Lines starting with `/`** are Claude Code interactive commands — type them inside an active Claude Code session. In the desktop app this means inside the **Code tab**. In the CLI this means after you run `$ claude` to start.
+- **Lines starting with `/`** are Claude Code interactive commands — they work in the **Claude Code CLI only** (after you run `$ claude` in your terminal). They do **not** work in the Claude desktop app's Code tab — the Code tab uses the natural-language install path above.
 
 Example:
 - `$ claude plugin marketplace add umangbuilds/dhurandhar-os` — runs in your terminal (CLI path only)
-- `/plugin list` — type this inside Claude Code (works in either the desktop app's Code tab, or after `$ claude` in the terminal)
+- `/plugin list` — type this inside Claude Code CLI after `$ claude` (terminal path only — not the Code tab)
 
 ---
 
@@ -35,20 +35,21 @@ Optional but recommended:
 
 ---
 
-## Quick install — desktop app, Code tab (no terminal)
+## Quick install — desktop app, Code tab (recommended)
 
-This is the easy path for non-technical operators.
+No terminal. No CLI. No `/plugin` slash commands.
 
 1. Install the **Claude desktop app** from [claude.ai/download](https://claude.ai/download) (Mac or Windows).
-2. Open the app, sign in, and click the **Code** tab in the sidebar. Claude Code runs natively inside it — same skills engine, no terminal needed.
-3. Inside the Code tab, run these commands one by one:
-   ```
-   /plugin marketplace add umangbuilds/dhurandhar-os
-   /plugin install dhurandhar-os@dhurandhar-os
-   /plugin list
-   /reload-plugins
-   ```
-4. You should see `dhurandhar-os v0.1.8` listed as Enabled.
+2. Open the app and click the **Code** tab in the sidebar.
+3. In a fresh Code tab chat, type this single sentence:
+
+   install DhurandharOS from github.com/umangbuilds/dhurandhar-os
+
+4. Click **Allow once** on each permission prompt that appears (typically 5-8 prompts). Claude Code will add the marketplace, install the plugin, and verify it's enabled.
+5. Restart Claude Code (Cmd+Q on Mac and reopen, or close-and-reopen on Windows).
+6. Open a fresh Code tab session and type `use dhurandhar` to confirm voice loads.
+
+You should see DhurandharOS load — `dhurandhar-os v0.1.11` enabled.
 
 Done. Skip to **First session — what to expect** below.
 
@@ -70,7 +71,7 @@ Then inside Claude Code:
 /reload-plugins
 ```
 
-You should see `dhurandhar-os v0.1.8` listed as Enabled.
+You should see `dhurandhar-os v0.1.11` listed as Enabled.
 
 ---
 
@@ -198,8 +199,11 @@ WSL2 file access: your Windows files are at `/mnt/c/Users/<your-name>/`. Run Cla
 
 ## Troubleshooting
 
+### "/plugin isn't available in this environment" error
+You're typing the slash commands directly into Claude Desktop's Code tab. The /plugin command works only in the Claude Code CLI (terminal), not in the Code tab. Use the natural-language install instead — type "install DhurandharOS from github.com/umangbuilds/dhurandhar-os" in a Code tab chat. Claude Code will run the right commands for you with permission prompts.
+
 ### Skills don't auto-trigger
-- Confirm `/plugin list` shows `dhurandhar-os v0.1.8`.
+- Confirm `/plugin list` shows `dhurandhar-os v0.1.11`.
 - Confirm each `skills/<skill-name>/SKILL.md` has valid YAML frontmatter (no parsing errors).
 - Try explicit invocation: "use the prd-writer skill on this." If explicit works but auto-trigger doesn't, the `description` field's natural-language matching may need tuning.
 - Anthropic issue #51806: if `claude plugin marketplace add` fails with "marketplace not found," manually add the marketplace URL by editing `~/.claude/known_marketplaces.json` and adding `"umangbuilds/dhurandhar-os"` to the list, then retry.
