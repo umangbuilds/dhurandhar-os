@@ -1,6 +1,6 @@
 ---
 name: builder
-description: TDD-first implementation orchestrator for DhurandharOS. Triggers on "build / implement / let's code / ship this / write the function / create the endpoint" and on edits near .env, prod.config, or any path containing "production." Plan-first, RED-GREEN-REFACTOR enforced, destructive commands guarded (git reset --hard, DROP TABLE, force-push, ALTER TABLE without backup), file tree freezable to a single directory on operator request, subagents dispatched on tasks longer than ~50 lines or multi-file scope. Hands off to the reviewer skill on completion.
+description: TDD-first implementation orchestrator for DhurandharOS. Triggers ONLY on spec-to-code phrases — "implement the spec," "build per the PRD," "code this up based on the spec," "let's code," "write the function for X in the spec," "ship the spec," "implement Y from the PRD," "write the function," "create the endpoint" — i.e. AFTER a PRD or locked spec exists in the session. Also fires on edits near .env, prod.config, or any path containing "production." Does NOT fire on raw build intent ("I want to build X," "let's build Y," "create a tool that Z") — those route to workflow-orchestrator, which walks the operator through reality-check → spec → build → review → launch and only then hands off to builder. Plan-first, RED-GREEN-REFACTOR enforced, destructive commands guarded (git reset --hard, DROP TABLE, force-push, ALTER TABLE without backup), file tree freezable to a single directory on operator request, subagents dispatched on tasks longer than ~50 lines or multi-file scope. Hands off to the reviewer skill on completion.
 license: MIT
 ---
 
@@ -14,14 +14,24 @@ The discipline is the moat. Builder enforces it.
 
 ## When this skill activates
 
+Builder owns **spec-to-code**, not raw build intent. The split with workflow-orchestrator:
+
+- Raw build intent ("I want to build X", "let's build Y", "create a tool that Z", "I have an idea for Q") → **workflow-orchestrator** fires first, walks the operator through reality-check → PRD → build → review → launch, and only then hands off to Builder.
+- Spec-to-code ("implement the spec," "build per the PRD," "code this up based on the spec," "let's code," "write the function for X in the spec," "ship the spec," "implement Y from the PRD") → **Builder** fires directly.
+
 **Auto-trigger conditions:**
-- "build," "implement," "let's code," "ship this," "write the function," "create the endpoint," "make a CLI for," "wire up the integration."
+- Spec-aware phrases: "implement the spec," "build per the PRD," "code this up," "code this up based on the spec," "let's code," "ship the spec," "write the function for [X in the spec]," "implement [Y from the PRD]."
+- Concrete implementation phrases when a PRD or locked spec exists in the working directory or session: "write the function," "create the endpoint," "make a CLI for," "wire up the integration."
 - Any edit operation targeting a path containing `.env`, `prod.config`, or `production`.
-- After PRD Writer locks a spec — Builder picks up the spec and starts the plan.
+- Direct invocation by workflow-orchestrator after the PRD checkpoint (`build`).
 
 **Explicit invocation:** "use builder to implement X."
 
-**Does not activate on:** spec writing (PRD Writer), code review (Reviewer), brainstorming (Idea Reality Check), deployment architecture (Deployment Advisor).
+**Does NOT activate on:**
+- Raw build intent without a spec (workflow-orchestrator owns this — see its triggers).
+- Spec writing (PRD Writer), code review (Reviewer), brainstorming (Idea Reality Check), deployment architecture (Deployment Advisor).
+
+**Spec presence check.** Before responding to an ambiguous "build X" / "let's code" message, look for a PRD signal: a file named `prd.md` / `spec.md` / `PRD.md` / `SPEC.md` / `*.prd.md` in the working directory, OR a spec produced earlier in this session, OR an explicit operator reference to a prior spec ("the PRD we wrote yesterday"). If a spec signal is present, Builder fires. If not, yield to workflow-orchestrator.
 
 ---
 

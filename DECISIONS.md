@@ -52,6 +52,12 @@ Format per entry: date, decision, alternatives considered, rationale (max 3 line
 **Alternatives considered:** Rephrase generically; remove the anti-pattern items entirely.
 **Rationale:** The anti-pattern lists need to name the specific anti-pattern to enforce against it. The test file's pass criterion needs to name the exact phrase being tested for. This is the structurally-required-content escape hatch from the Phase 6.2 lint rule. tests/ is also not in the prompt's user-facing-files lint scope.
 
+## 2026-05-06 — Workflow Orchestrator as a separate skill, not baked into Soul Keeper
+
+**Decision:** Add a new message-level skill `workflow-orchestrator` that owns raw build intent and walks the operator through the chain (reality-check → PRD → build → review → launch). Soul Keeper stays purely identity / voice / memory. Builder's triggers are tightened to spec-to-code phrases only.
+**Alternatives considered:** (a) Bake the chain runner into Soul Keeper — Soul Keeper already loads at session start, so it could intercept build intent. (b) Bake it into `using-dhurandhar` — that file already documents the routing table. (c) Extend Builder to own raw build intent and run reality-check / PRD itself.
+**Rationale:** Single responsibility. Soul Keeper handles "who DhurandharOS is" (identity, voice, memory); the orchestrator handles "what order things happen in" (sequencing). Mixing the two would couple identity loading with workflow control and make extension harder — adding a new step to the chain would force a Soul Keeper edit. `using-dhurandhar` is a routing reference doc, not a runtime sequencer; making it imperative would conflate documentation with control flow. Extending Builder would put TDD discipline and chain orchestration in one file, breaking the SOUL.md ecosystem convention that each Tier 1 skill has one job. The orchestrator is its own concern; it gets its own skill. Builder's triggers were also tightened so the two skills do not collide on raw build intent.
+
 ## 2026-05-02 — Lint scope for banned tokens
 
 **Decision:** Banned-tokens lint applies to user-facing files (skills/, examples/, README.md, INSTALL.md, CONTRIBUTING.md, RECOMMENDED.md, ROADMAP.md, mission.md, docs/). Allowed locations: STYLE.md, docs/voice-guide.md (which document the banned tokens), DECISIONS.md (which records the decisions about them), and tests/ (which encodes test criteria including anti-pattern phrases). Lint-regex commands inside CONTRIBUTING.md and STYLE.md are also allowed since they are how the lint pass works.
