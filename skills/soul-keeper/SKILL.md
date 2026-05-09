@@ -78,10 +78,28 @@ MEMORY.md is append-only. Treat it like a journal whose pages cannot be torn out
 
 1. **Confirm what to capture.** Echo back: "Logging: [one-line summary]. Confirm?" — wait for "yes" or equivalent before writing. Never assume. Never auto-write.
 
-2. **Determine target file.**
-   - Project-specific memory → `MEMORY.md` in the user's working directory (project root).
-   - Cross-project lessons → `lessons.md` in the user's working directory.
-   - If neither exists, create `MEMORY.md` in the user's working directory using the Write tool.
+2. **Determine target file — local override preferred.** The default target is `MEMORY.local.md`, not the public `MEMORY.md`. The local variant is the operator's private memory; the public file ships in the repo as a template and shipped decisions.
+
+   File-resolution order:
+   - **`MEMORY.local.md` exists in the working directory** → use it.
+   - **`MEMORY.local.md` does not exist AND `MEMORY.md` is tracked in a public git repo** (run `git ls-files --error-unmatch MEMORY.md` from the working directory; exit code 0 means tracked) → create `MEMORY.local.md` using the Write tool with the local template (see below), then use it. Tell the operator: "Created `MEMORY.local.md` for private entries — `.gitignore` keeps it local. Use `MEMORY.md` only when you want the entry shipped publicly."
+   - **`MEMORY.md` exists but the working directory is not a git repo, or `MEMORY.md` is gitignored / untracked** → use `MEMORY.md` directly. The operator chose a private working directory; honour that.
+   - **Neither file exists** → create `MEMORY.local.md` (default-private posture) using the local template.
+   - **Operator explicitly says "log to public MEMORY," "make this public," or "ship this entry"** → use `MEMORY.md` regardless of the rules above. Operator intent overrides default-private posture.
+
+   Local template for `MEMORY.local.md` (and `lessons.local.md`):
+   ```
+   # Running memory log (operator-private)
+
+   Local-only. Excluded from git via `.gitignore`. Never pushed.
+   For shipped, public-facing decisions, use `MEMORY.md`.
+
+   ---
+
+   ## Entries
+
+   <!-- soul-keeper appends below this line -->
+   ```
 
 3. **Format the entry.** Use ISO 8601 timestamp with India timezone `+05:30`:
    ```
@@ -91,11 +109,11 @@ MEMORY.md is append-only. Treat it like a journal whose pages cannot be torn out
    ```
    One-line summary is plain English, not jargon. Detail block names files and rationale.
 
-4. **Append using the Edit tool — never overwrite.** Use the Edit tool to append the entry after the last line of `MEMORY.md`. If the marker `<!-- soul-keeper appends below this line -->` exists, append after it. Never replace the file contents.
+4. **Append using the Edit tool — never overwrite.** Use the Edit tool to append the entry after the last line of the target file (chosen in step 2). If the marker `<!-- soul-keeper appends below this line -->` exists, append after it. Never replace the file contents.
 
-5. **Confirm to user after the write succeeds.** Say: "Logged to MEMORY.md at [timestamp]." Only say "Logged" or "Saved" AFTER the Edit tool call confirms the write. If the write fails, report the error explicitly — never say "Saved" without a successful write.
+5. **Confirm to user after the write succeeds.** Say: "Logged to `[target file]` at [timestamp]." Use the actual file name chosen in step 2 (`MEMORY.local.md` or `MEMORY.md`). Only say "Logged" or "Saved" AFTER the Edit tool call confirms the write. If the write fails, report the error explicitly — never say "Saved" without a successful write.
 
-6. **Do NOT modify any file in the `skills/` directory under any circumstance.** Memory writes go to working-directory files only (`MEMORY.md`, `lessons.md`, `DECISIONS.md`, `BLOCKERS.md`). Never touch the plugin's own SKILL.md files.
+6. **Do NOT modify any file in the `skills/` directory under any circumstance.** Memory writes go to working-directory files only (`MEMORY.md`, `MEMORY.local.md`, `lessons.md`, `lessons.local.md`, `DECISIONS.md`, `DECISIONS.local.md`, `BLOCKERS.md`). Never touch the plugin's own SKILL.md files.
 
 **Privacy:**
 - Never log credentials, API keys, .env values, or tokens.
@@ -123,7 +141,8 @@ lessons.md is append-only. Format: `LESSON: [what went wrong] → [what to do in
 1. Detect the trigger.
 2. Draft a candidate lesson in the locked format. Keep it short — one line where possible.
 3. Confirm with the operator. Edit if they want different wording.
-4. Append below the `<!-- soul-keeper appends below this line -->` marker.
+4. **Determine target file — same local-override logic as memory capture.** Prefer `lessons.local.md` over the public `lessons.md`. Create `lessons.local.md` from the local template if `lessons.md` is publicly tracked. Operator can override with "log to public lessons" / "make this public."
+5. Append below the `<!-- soul-keeper appends below this line -->` marker in the chosen target file.
 
 **Quality bar for shipped lessons:**
 - Names a concrete failure or surprise.
