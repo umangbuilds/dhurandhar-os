@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "The operating system for one-person armies who refuse to think small.",
-    "version": "0.1.15"
+    "version": "0.1.16"
   },
   "plugins": [
     {
       "name": "dhurandhar-os",
       "source": "./",
-      "version": "0.1.15",
-      "description": "Seven Tier 1 skills + Workflow Orchestrator + voice/memory layer — Soul Keeper, Workflow Orchestrator (chain runner for raw build intent), Builder (spec-to-code), Reviewer, PRD Writer, Idea + Reality Check, Deployment Advisor (Indian context — Vercel/Supabase/AWS Mumbai), UI Designer (product-first design, anti-AI-slop gate, India-market aware). Launch + Marketer stub ships alongside.",
+      "version": "0.1.16",
+      "description": "Eight Tier 1 skills + voice/memory layer — Soul Keeper, Workflow Orchestrator (chain runner for raw build intent), Idea + Reality Check, PRD Writer, Builder (spec-to-code), UI Designer (product-first design, anti-AI-slop gate, India-market aware), Reviewer, Deployment Advisor (Indian context — Vercel/Supabase/AWS Mumbai). Launch + Marketer stub ships alongside.",
       "category": "productivity",
       "keywords": [
         "india",
