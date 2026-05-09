@@ -14,3 +14,7 @@ Skills must:
 ## Entries
 
 <!-- soul-keeper appends below this line -->
+
+## 2026-05-09T12:00:00+05:30 — DhurandharOS GitHub org claimed defensively
+
+The `github.com/DhurandharOS` org is squatted to prevent typo-impersonation and brand hijacking. No active use, no migration plan. Canonical repo stays at `umangbuilds/dhurandhar-os`. Do not propose moving the codebase unless the operator explicitly raises it.
