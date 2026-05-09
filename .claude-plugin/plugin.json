@@ -1,6 +1,6 @@
 {
   "name": "dhurandhar-os",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "The operating system for one-person armies who refuse to think small. Eight Tier 1 skills (Soul Keeper, Workflow Orchestrator, Idea Reality Check, PRD Writer, Builder, UI Designer, Reviewer, Deployment Advisor) + Launch + Marketer stub. Walks raw build intent through the canonical chain (reality-check → PRD → build → review → launch) with explicit checkpoints. For non-technical Indian operators shipping serious products alone.",
   "author": {
     "name": "DhurandharOS contributors",

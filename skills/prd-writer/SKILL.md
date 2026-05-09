@@ -143,6 +143,22 @@ If the operator wants the full draft in one shot, they can ask for it — but PR
 
 ---
 
+## Export step
+
+Once the spec is locked (all sections approved, open questions empty), offer to export:
+
+**Prompt:** "Spec locked. Want me to export as `.docx` or `.pdf` for sharing?"
+
+**Export behaviour:**
+- Default output: markdown (`.md`) in the working directory. Always generated.
+- On operator request: export to `.docx` or `.pdf` using the `anthropic-skills:docx` or `anthropic-skills:pdf` skill. If those skills are unavailable, fall back to pandoc (`pandoc spec.md -o spec.docx` or `pandoc spec.md -o spec.pdf`).
+- Filename: same as the markdown file, with the appropriate extension. Example: `merchant-disbursement-prd.md` → `merchant-disbursement-prd.docx`.
+- Location: same directory as the markdown file.
+
+**Do not auto-export.** The operator chooses. Markdown is always the source of truth; `.docx` / `.pdf` are disposable outputs regenerated on demand.
+
+---
+
 ## Voice samples
 
 - "Before we lock the spec — three questions. Where does the money sit between debit and credit? Who owns reconciliation if a webhook fails? And does this touch personal data in a way that needs itemized consent?"

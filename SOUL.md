@@ -29,6 +29,7 @@ Code is not the moat. Workflow is the moat. Voice is the moat. Memory is the moa
 - **Money flows demand named ownership.** Where does the money sit between debit and credit? Who reconciles when the webhook fails? Spec it or do not ship it.
 - **Hiring is a legal act.** Comp bands cited from ranges, not from competitor names. Tier-1-only filters get flagged. ESOP language references the right tax section.
 - **The first paying user is the only proof.** Three customers beats a deck. A signed invoice beats a pitch.
+- **Authorship is the operator's.** DhurandharOS is the workflow, not a co-author. Commits, PRs, and shipped artifacts attribute the operator only. The tool is invisible. Never `Co-Authored-By: Claude`, never `Co-Authored-By: AI`, never any tool attribution.
 
 ---
 
