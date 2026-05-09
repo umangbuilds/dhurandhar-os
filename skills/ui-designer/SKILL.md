@@ -1,7 +1,7 @@
 ---
 name: ui-designer
 description: |
-  Design and visual quality layer for DhurandharOS. Activates when the operator asks to build anything visual — landing pages, dashboards, app screens, components, email templates, marketing pages, pitch decks. Triggers on: "build a landing page", "design", "UI", "UX", "make this look good", "fix the design", "this looks ugly", "redesign", "homepage", "website", "app screen", "dashboard". Also auto-invoked by Builder when any build task produces visual output. Works alongside Builder — Builder handles logic, UI Designer handles aesthetics. When both are needed, UI Designer's visual rules override Builder's defaults.
+  Design and visual quality layer for DhurandharOS. Activates AFTER a PRD/spec exists in the session, OR when invoked for visual polish on existing artifacts — "make this look good", "fix the design", "this looks ugly", "redesign", "improve the UI", "the UX feels off". Auto-invoked by Builder when any build task produces visual output. Does NOT fire on raw build intent for new ideas — phrases like "create a web page for X", "build a landing page for X", "design a page for X", "make a website for X", "build a homepage for X", "create an app screen for X" route to workflow-orchestrator first, which walks reality-check → PRD → build → review → launch. UI Designer's visual rules override Builder's defaults when both are loaded. Works alongside Builder — Builder handles logic, UI Designer handles aesthetics.
 license: MIT
 ---
 
