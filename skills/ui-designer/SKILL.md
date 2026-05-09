@@ -104,6 +104,94 @@ Run this before presenting any visual output. If any check fails, fix first:
 
 ---
 
+## Step 6 — Social presence assets (favicon + share previews)
+
+For any deployable web project, three asset categories must be in place **before** the build is approved for deploy. Without these, the operator's product link shared on WhatsApp, LinkedIn, X, Slack, or Facebook lands as a blank rectangle — the worst possible first impression.
+
+**Auto-trigger conditions:**
+- Builder ships HTML, JSX, TSX, Vue, Svelte, or Astro components for a public-facing web surface.
+- Operator says "deploy," "ship," "push to Vercel," "push to Netlify," "push to Cloudflare Pages," "go live," "make it live."
+- Any edit to `index.html`, `app/layout.tsx`, `pages/_document.tsx`, `pages/_app.tsx`, `BaseHead.astro`, or any framework root layout file.
+
+**Skip conditions (do not run):**
+- Backend-only services (no HTML surface).
+- CLI tools, libraries, Python packages, Go binaries.
+- API-only deployments where no public web page exists.
+- Internal tools where the link is never shared externally.
+
+**Three checks — in this order:**
+
+1. **Favicon present.**
+   - File: `public/favicon.svg` (preferred), or `public/favicon.ico`, plus `apple-touch-icon.png` (180×180), `favicon-32x32.png`, `favicon-16x16.png`.
+   - HTML reference: `<link rel="icon">` and `<link rel="apple-touch-icon">` in the entry layout's `<head>`.
+
+2. **Open Graph image present.**
+   - File: `public/og-image.png`, **1200×630 px** ideal (works for WhatsApp, LinkedIn, Slack, Facebook). The `summary_large_image` Twitter Card uses the same image; 1200×675 is X-specific but 1200×630 is acceptable.
+   - The image should communicate the product in 2 seconds: product name (large, headline font from `.design-system.md`) + tagline (smaller, body font) on the brand colour background. Logo top-left if available.
+
+3. **Social meta tags in the entry HTML's `<head>`.** Canonical block:
+
+```html
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+<!-- Primary -->
+<title>[Product Name] — [Tagline]</title>
+<meta name="description" content="[120-160 chars, plain English, no slogan-speak]">
+
+<!-- Open Graph — used by WhatsApp, LinkedIn, Slack, Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://[domain]">
+<meta property="og:title" content="[Product Name]">
+<meta property="og:description" content="[120-160 chars]">
+<meta property="og:image" content="https://[domain]/og-image.png">
+<meta property="og:site_name" content="[Product Name]">
+
+<!-- Twitter Card — used by X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="[Product Name]">
+<meta name="twitter:description" content="[120-160 chars]">
+<meta name="twitter:image" content="https://[domain]/og-image.png">
+```
+
+**If any check fails, propose generation:**
+
+- **Favicon generation:** simplest first. Default — 32×32 SVG / PNG, operator's first letter or brand letter centred, brand colour from `.design-system.md`. On operator request, accept an uploaded SVG / PNG and convert to the full favicon set (`favicon.ico`, `favicon-32x32.png`, `favicon-16x16.png`, `apple-touch-icon.png`, optionally `android-chrome-192x192.png` + `android-chrome-512x512.png`).
+- **OG image generation:** 1200×630 PNG. Default — product name (headline font, large) + tagline (body font, smaller) on brand-colour background. Logo top-left if available. On request — fully custom.
+- **Meta tag insertion:** add the canonical block to the entry layout's `<head>`. Replace `[Product Name]`, `[Tagline]`, `[domain]`, `[120-160 chars]` with operator-confirmed values.
+
+Never auto-generate without operator approval. Show what would be generated; ask first.
+
+**Framework-specific placement:**
+
+- **Next.js (app dir):** use the `metadata` export in `app/layout.tsx`. Place images in `public/`.
+- **Next.js (pages dir):** add to `pages/_document.tsx` `<Head>` or per-page `<Head>` from `next/head`.
+- **Vite / Create React App / plain HTML:** add to `index.html` `<head>`.
+- **Remix:** use the `meta` export per route or root.
+- **Astro:** create or update `BaseHead.astro` and import it in the root layout.
+- **SvelteKit:** add to `src/app.html` `<head>` or per-route `+layout.svelte` with `<svelte:head>`.
+
+**Cache reality — flag this to the operator:**
+
+After deploying, social platforms cache OG data for hours to days. If the operator shares the link before the cache refreshes, the share preview will be wrong (or blank) even though the meta tags are correct on the live site. To force-refresh:
+
+- Facebook (also covers WhatsApp): https://developers.facebook.com/tools/debug/
+- LinkedIn: https://www.linkedin.com/post-inspector/
+- X: https://cards-dev.twitter.com/validator
+
+WhatsApp has no debugger — usually clears within 24 hours, or use a different URL formatting (`?v=2`) to bypass the cache.
+
+**Voice samples:**
+
+- "Before we hit deploy — your `/og-image.png` isn't there. WhatsApp shares will land as a blank thumbnail. Want me to generate one — 1200×630, product name centred, your brand colour from the design system?"
+- "Favicon's missing. Fix is one file in `public/` plus four lines in `app/layout.tsx`. Same minute."
+- "Meta tags are in. After deploy, run the link through Facebook Sharing Debugger to force-refresh the cache before sharing on LinkedIn — otherwise LinkedIn caches the empty preview from your first crawl."
+
+---
+
 ## Design persistence
 
 After any build with visual output, write or update `.design-system.md` in the operator's working directory:

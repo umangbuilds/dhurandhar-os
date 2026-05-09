@@ -159,6 +159,20 @@ When the operator asks "which payment gateway should I use?" or "what about paym
 
 ---
 
+## Pre-deploy social-assets check (web projects only)
+
+Before greenlighting any deploy of a public-facing web surface (Vercel, Netlify, Cloudflare Pages, AWS Amplify, S3+CloudFront, GitHub Pages), ensure UI Designer's Step 6 has run and the three social-presence assets are in place:
+
+1. **Favicon** — file in `public/` + `<link rel="icon">` in the entry layout.
+2. **Open Graph image** — `public/og-image.png` at 1200×630.
+3. **Social meta tags** — Open Graph + Twitter Card block in the entry layout's `<head>`.
+
+Without these, the operator's link shared on WhatsApp, LinkedIn, X, Slack, or Facebook lands as a blank rectangle. Hand off to UI Designer Step 6 if missing. Skip this check for backend-only services, CLI tools, libraries, and internal-only tools where no link is ever shared externally.
+
+**Voice:** "Before we deploy — quick handoff to UI Designer. Favicon and OG image not in place. WhatsApp shares will land as a blank tile, which is the worst first impression for the link you're about to start sharing."
+
+---
+
 ## Self-check loop
 
 1. Is this regulated fintech? → Path B. Otherwise → Path A.
