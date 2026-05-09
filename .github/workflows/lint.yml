@@ -1,0 +1,22 @@
+# Banned-token lint on every PR and push to main.
+# Catches voice / PSP / founder-parallel-venture / film references before merge.
+
+name: Lint banned tokens
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run banned-tokens lint
+        run: bash scripts/lint-banned-tokens.sh
