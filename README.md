@@ -6,7 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Claude Code 2.0+](https://img.shields.io/badge/Claude%20Code-2.0%2B-blue.svg)](https://claude.ai/code)
-[![Status: v0.1.11](https://img.shields.io/badge/Status-v0.1.11-green.svg)](ROADMAP.md)
+[![Status: v0.1.12](https://img.shields.io/badge/Status-v0.1.12-green.svg)](ROADMAP.md)
 
 DhurandharOS is a Claude Code skills package for non-technical operators who want to ship serious products alone. The package is the "senior team in a file": product, engineering, security, deployment, design, workflow, voice, and identity roles encoded as auto-triggering skills that load when the work calls for them.
 
@@ -19,6 +19,40 @@ MIT. Free. Open source. Forever.
 What the flow looks like: operator opens Claude Code in their project directory. Soul Keeper loads silently — identity, voice, memory all calibrated. Operator says "I'm thinking about building a payments reconciliation tool." Idea Reality Check surfaces: who's your first paying user, what are they paying you to make go away. Operator names them, moves to "let's spec this." PRD Writer takes over: settlement timing question raised in minute two, failure modes mandatory, webhook reconciliation ownership named. Operator says "build the webhook handler." Builder writes the plan first, the failing test second, runs the post-build review automatically. Operator asks "where should I host this?" Deployment Advisor: Vercel + Supabase for the pre-revenue phase, AWS Mumbai when the regulated triggers fire.
 
 That's one session. No slash commands memorised.
+
+---
+
+## What this unlocks for a non-technical operator
+
+1. **Pushback before code.** Names three paying users or no build.
+2. **Money-aware specs.** Forces settlement timing, reconciliation owner, DPDPA questions.
+3. **TDD on every feature.** No vibe-coded demos passing as products.
+4. **Adversarial security review.** OWASP-class findings, ranked, max five.
+5. **Workflow on rails.** Reality-check → PRD → build → review → launch.
+6. **UI design inside the chain.** Not bolted on after.
+7. **Memory across sessions.** Decisions persist. No re-litigation.
+8. **Indian defaults.** No Bay Area, Series A, or W2 assumptions.
+9. **Voice in your register.** Values don't flex. Tone does.
+10. **Honest pushback.** No sycophancy. No emoji. No "Brilliant!"
+
+Vanilla Claude is a junior who does what you ask. DhurandharOS is the senior team that asks what you forgot.
+
+---
+
+## What this unlocks for a technical operator
+
+1. **TDD when you'd skip it.** Deadline pressure cannot override red-green-refactor.
+2. **Adversarial review without a pair.** Five real findings, OWASP Top 10:2025 + ASVS 5.0.
+3. **No "I'll spec it later."** Workflow Orchestrator holds the chain. Builder yields without a PRD.
+4. **Money-flow rigor at spec time.** Settlement timing, reconciliation owner, webhook failure paths — caught before code, not in production.
+5. **Auto-triggering, not slash-command theatre.** Skills fire on what you're doing.
+6. **Indian context baked in.** RBI Mumbai region, Section 17(2)(vi), DPDPA — not GDPR-by-translation.
+7. **Memory persists.** DECISIONS.md, MEMORY.md, lessons.md across sessions. Don't re-debug what you debugged last week.
+8. **UI Designer is a delegate.** Builder routes visual work. Output doesn't look like a 2am intern wrote it.
+9. **Voice lint enforced.** STYLE.md catches sycophancy and US-default frames in shipped copy. Your README does not sound like ChatGPT.
+10. **MIT, forkable, no black box.** Read the skills, edit your fork, ship.
+
+Vanilla Claude is a pair-programmer who agrees too easily. DhurandharOS is the senior team that pushes back when you cut corners.
 
 ---
 
