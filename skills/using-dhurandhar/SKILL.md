@@ -20,7 +20,7 @@ The orchestration layer for the seven DhurandharOS Tier 1 skills. Use this routi
 | **Idea + Reality Check** | "should I...", "thinking about...", "what if...", "I'm considering...", "pivoting...", "not sure if...", risky decisions, overcomplicated plans. Also invoked by Workflow Orchestrator as step 1. Refuses to ship code without first paying users named. |
 | **PRD Writer** | "spec this", "write requirements", "PRD", "let's design the feature", "scope this", "lock the spec". Also invoked by Workflow Orchestrator as step 2. |
 | **Builder** | Spec-to-code only — "implement the spec", "build per the PRD", "code this up based on the spec", "let's code", "ship the spec", "write the function" / "create the endpoint" when a spec is in scope. Does NOT fire on raw build intent (those go to Workflow Orchestrator first). Also invoked by Workflow Orchestrator as step 3. |
-| **UI Designer** | "design", "UI", "UX", "landing page", "homepage", "website", "app screen", "dashboard", "make this look good", "fix the design", "this looks ugly", "redesign", any visual build request — AND auto-invoked by Builder for any task that produces HTML/CSS/JSX output. Builder handles logic; UI Designer handles aesthetics. UI Designer's visual decisions override Builder's defaults. |
+| **UI Designer** | Visual polish on EXISTING artifacts — "make this look good", "fix the design", "this looks ugly", "redesign", "improve the UI", "the UX feels off". AND auto-invoked by Builder for any task that produces HTML/CSS/JSX output. Does NOT fire on raw build intent for new ideas — "create a web page for X", "build a landing page for X", "design a page for X" route to Workflow Orchestrator first. Builder handles logic; UI Designer handles aesthetics. UI Designer's visual decisions override Builder's defaults. |
 | **Reviewer** | "review this", "check this code", "is this safe?", git diff, PR creation — AND automatically after Builder completes ANY build task. |
 | **Deployment Advisor** | "deploy", "hosting", "where should I host", "what infra", "cloud setup", "going live", "production setup", "Vercel", "Supabase", "AWS", "scaling". |
 | **Launch + Marketer** | "help me launch", "write copy", marketing/launch requests. v0.1 stub — responds with "coming in v0.2" and points to coreyhaines31/marketingskills. |
@@ -44,6 +44,8 @@ The orchestration layer for the seven DhurandharOS Tier 1 skills. Use this routi
 7. **If no skill matches:** respond normally but maintain Soul Keeper's voice (80/15/5, no banned tokens, mirror principle).
 
 8. **Skills can chain.** Workflow Orchestrator → Idea Reality Check → PRD Writer → Builder (+ UI Designer for visual output) → Reviewer → Launch Marketer is the canonical end-to-end flow. Do not skip steps without an explicit operator override.
+
+9. **Visual-artifact intent without a spec → Workflow Orchestrator wins.** When the operator says "create a web page for X", "build a landing page for X", "design a page for X", "make a website for X", "build a homepage for X", or "create an app screen for X" — and no PRD exists in session — Workflow Orchestrator fires first, not UI Designer. UI Designer activates only on visual polish requests for existing artifacts, or when auto-invoked by Builder mid-build. This guard prevents the front-end of the pipeline (reality-check → PRD) from being silently skipped on naked visual build requests.
 
 ---
 
